@@ -49,16 +49,13 @@ export async function generateMetadata({ params }, parent) {
     alternates: {
       canonical: `https://assignhome.ca/${params.city}/${params.slug}`,
     },
-    title:
-      data.preconstruction.project_name +
-      " in " +
-      data.preconstruction.city.name,
+    title: data.project_name + " in " + data.city.name,
     description:
-      data.preconstruction.project_name +
+      data.project_name +
       " in " +
-      data.preconstruction.city.name +
+      data.city.name +
       " prices starting from " +
-      Nformatter(data.preconstruction.price_starting_from, 2) +
+      Nformatter(data.price_starting_from, 2) +
       " CAD",
   };
 }
@@ -79,12 +76,6 @@ export default async function Home({ params }) {
       });
     }
     return neImgs;
-  };
-
-  const convDash = (add) => {
-    var result = add.split(" ").join("-");
-    var newresult = result.split(",").join("-");
-    return newresult;
   };
 
   const doTOcheck = (noo) => {
@@ -140,9 +131,9 @@ export default async function Home({ params }) {
           />
 
           <Gallery
-            images={data.preconstruction.image}
-            project_name={data.preconstruction.project_name}
-            project_address={data.preconstruction.project_address}
+            images={data.image}
+            project_name={data.project_name}
+            project_address={data.project_address}
           ></Gallery>
 
           <div className="container  px-0 pt-3">
@@ -154,13 +145,11 @@ export default async function Home({ params }) {
                       <div className="d-flex gap-3 my-2">
                         <div className=" btn btn-sm btn-white shadow ">
                           <span className="col fs-esmall">
-                            {data.preconstruction.city.name}
+                            {data.city.name}
                           </span>
                         </div>
                         <div className=" btn btn-sm btn-danger ">
-                          <span className="col  ">
-                            {data.preconstruction.project_type}
-                          </span>
+                          <span className="col  ">{data.project_type}</span>
                         </div>
                       </div>
 
@@ -173,54 +162,41 @@ export default async function Home({ params }) {
                       </p> */}
 
                       <h1 className="text-mine  fw-mine mt-1 mb-0 text-danger font-family2 mb-1 pricefs1">
-                        {checkPricing(data.preconstruction.price_starting_from)}
+                        {checkPricing(data.price_starting_from)}
                       </h1>
                       <div className="rounded-mine">
                         <div>
                           <div className="mb-1">
                             <span className=" fw-mine2 mb-2 fs-mine3"></span>
-                            <span scope="col">
-                              {data.preconstruction.project_address}
-                            </span>
+                            <span scope="col">{data.project_name}</span>
                           </div>
-                          <div className="mb-1">
-                            <div className="d-flex me-2 fw-mine2 mb-2 fs-mine3">
-                              <div className=" pe-3 d-flex align-items-center justify-content-center">
-                                <img
-                                  width="20"
-                                  height="20"
-                                  src="https://img.icons8.com/ios/50/bed.png"
-                                  alt="bed"
-                                />{" "}
-                                <span className="ps-1 ">2 Bedroom </span>
+                          <div className="bg-light mt-5">
+                            <div className="row row-cols-md-4 row-cols-1 text-dark py-3 ps-3 ">
+                              <div className="col mb-3 ">
+                                <h6 className="fw-bold">Bedroom</h6>
+                                <span>{data.beds}</span>
                               </div>
-                              <div className="pe-3 d-flex align-items-center justify-content-center">
-                                <img
-                                  width="20"
-                                  height="20"
-                                  src="https://img.icons8.com/dotty/80/shower-and-tub.png"
-                                  alt="shower-and-tub"
-                                />{" "}
-                                <span className="ps-1 ">2 Bathroom</span>
+                              <div className="col mb-3 ">
+                                <h6 className="fw-bold">Bathroom</h6>
+                                <span>{data.baths}</span>
                               </div>
-                              <div className="pe-3 d-flex align-items-center justify-content-center">
-                                <img
-                                  width="20"
-                                  height="20"
-                                  src="https://img.icons8.com/ios/50/ruler.png"
-                                  alt="ruler"
-                                />
-                                <span className="ps-1 ">2000 sqft</span>
+                              <div className="col mb-3 ">
+                                <h6 className="fw-bold">Area</h6>
+                                <span>{data.area} sq.ft.</span>
+                              </div>
+                              <div className="col mb-3 ">
+                                <h6 className="fw-bold">City</h6>
+                                <span>{data.city.name}</span>
+                              </div>
+                              <div className="col mb-3">
+                                <h6 className="fw-bold">Assignment Type</h6>
+                                <span>{data.project_type}</span>
+                              </div>
+                              <div className="col mb-3">
+                                <h6 className="fw-bold">Occupancy</h6>
+                                <span>{data.occupancy}</span>
                               </div>
                             </div>
-                          </div>
-                          <div className="mb-1">
-                            <span className="me-2 fw-mine2 mb-2 fs-mine3">
-                              Occupancy:
-                            </span>
-                            <span scope="col">
-                              {data.preconstruction.occupancy}
-                            </span>
                           </div>
 
                           {/* <div className="mb-1">
@@ -326,7 +302,7 @@ export default async function Home({ params }) {
                         <div
                           className="iframe-container custom-description-container leading-8"
                           dangerouslySetInnerHTML={{
-                            __html: data.preconstruction.description,
+                            __html: data.description,
                           }}
                         ></div>
                       </div>
@@ -336,20 +312,20 @@ export default async function Home({ params }) {
                             Send me more info{" "}
                           </span>
                         }
-                        proj_name={data.preconstruction.project_name}
+                        proj_name={data.project_name}
                         defaultmessage={
                           "Please send me more information about " +
-                          data.preconstruction.project_name +
+                          data.project_name +
                           ".  Thank you"
                         }
-                        city={data.preconstruction.city.name}
+                        city={data.city.name}
                       />
                     </div>
                   </div>
                 </div>
-                <div className="py-3 my-5">
+                {/* <div className="py-3 my-5">
                   <h2 className="fw-bold fs-4 pb-3 font-family2">
-                    Walk Score for {data.preconstruction.project_name}
+                    Walk Score for {data.project_name}
                   </h2>
 
                   <div>
@@ -362,7 +338,7 @@ export default async function Home({ params }) {
                           width="100%"
                           src={
                             "https://www.walkscore.com/serve-walkscore-tile.php?wsid=&amp&s=" +
-                            convDash(data.preconstruction.project_address) +
+                            convDash(data.project_address) +
                             "&amp;o=h&amp;c=f&amp;h=500&amp;fh=0&amp;w=737"
                           }
                         ></iframe>
@@ -393,7 +369,7 @@ export default async function Home({ params }) {
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> */}
               </div>
 
               <div className="col col-md-4 ps-md-2 pt-5 pt-md-0" id="contact">
@@ -477,13 +453,13 @@ export default async function Home({ params }) {
                     </div>
                     <div className="my-3"></div>
                     <SideContactForm
-                      proj_name={data.preconstruction.project_name}
+                      proj_name={data.project_name}
                       defaultmessage={
                         "Please send me additional information about " +
-                        data.preconstruction.project_name +
+                        data.project_name +
                         ".  Thank you"
                       }
-                      city={data.preconstruction.city.name}
+                      city={data.city.name}
                     ></SideContactForm>
                     <div className="d-flex">
                       <p className="small-text2 mb-3 text-center">
@@ -511,31 +487,6 @@ export default async function Home({ params }) {
           </div> */}
 
           <div className="py-5 my-5"></div>
-          <div className="mb-md-10">
-            <div className="d-flex flex-column">
-              <h2 className="main-title font-family2">
-                Similar New Construction Homes
-                <div className="relative inline-flex sm-center mx-2 text-wrap">
-                  <span className="absolute inset-x-0 bottom-0 "></span>
-                  <span className="relative font-bold text-black whitespace-normal">
-                    in {data.preconstruction.city.name}
-                  </span>
-                </div>
-                ( 2024 )
-              </h2>
-            </div>
-            <div className="py-2"></div>
-            <div className="row row-cols-1 row-cols-md-4 gy-4">
-              {related &&
-                related.map((item) => (
-                  <div className="col" key={item.id}>
-                    <CondoCard {...item} />
-                  </div>
-                ))}
-            </div>
-            <div className="pt-md-5 pt-0"></div>
-            <div className="pt-md-5 pt-0"></div>
-          </div>
         </div>
       </div>
     </>
