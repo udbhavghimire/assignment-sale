@@ -9,7 +9,7 @@ import FeaturedCard from "@/components/FeaturedCard";
 
 async function getData(city) {
   const res = await fetch(
-    "https://api.condomonk.ca/api/preconstructions-city/" +
+    "https://api.assignhome.ca/api/preconstructions-city/" +
       city +
       "?page_size=10",
     {
@@ -23,7 +23,7 @@ async function getData(city) {
   return res.json();
 }
 async function getCities() {
-  const res = await fetch("https://api.condomonk.ca/api/all-city", {
+  const res = await fetch("https://api.assignhome.ca/api/all-city", {
     next: { revalidate: 10 },
   });
 
@@ -34,7 +34,7 @@ async function getCities() {
 }
 async function getFeaturedData() {
   const res = await fetch(
-    "https://api.condomonk.ca/api/preconstructions/?is_featured=True",
+    "https://api.assignhome.ca/api/preconstructions/?is_featured=True",
     {
       next: { revalidate: 10 },
     }

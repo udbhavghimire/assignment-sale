@@ -41,7 +41,7 @@ export default function Events() {
     eventdata.event_date = new Date(eventdata.event_date).toISOString();
 
     axios
-      .post("https://api.condomonk.ca/api/events/", eventdata)
+      .post("https://api.assignhome.ca/api/events/", eventdata)
       .then((res) => {
         setRefetcch(!refetch);
         setEventData(stat);
@@ -73,7 +73,7 @@ export default function Events() {
     let updateventdata = eventdata;
     axios
       .put(
-        `https://api.condomonk.ca/api/events/${eventdata.id}/`,
+        `https://api.assignhome.ca/api/events/${eventdata.id}/`,
         updateventdata
       )
       .then((res) => {
@@ -125,7 +125,7 @@ export default function Events() {
 
   function deleteEvent(id) {
     axios
-      .delete(`https://api.condomonk.ca/api/events/${id}/`)
+      .delete(`https://api.assignhome.ca/api/events/${id}/`)
       .then((res) => {
         console.log(res);
         setRefetcch(!refetch);
@@ -136,7 +136,7 @@ export default function Events() {
   }
   useEffect(() => {
     axios
-      .get("https://api.condomonk.ca/api/events/")
+      .get("https://api.assignhome.ca/api/events/")
       .then((res) => {
         console.log(res.data.results);
         setEvents(res.data.results);
@@ -157,7 +157,7 @@ export default function Events() {
   const handleEdit = (e, id) => {
     e.preventDefault();
     axios
-      .get(`https://api.condomonk.ca/api/events/${id}/`)
+      .get(`https://api.assignhome.ca/api/events/${id}/`)
       .then((res) => {
         console.log(res.data);
         setModalEvent(true);

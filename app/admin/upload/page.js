@@ -16,72 +16,20 @@ export default function Upload() {
     price_to: 0.0,
     project_type: "Condo",
     description: "",
-    project_address: "",
-    occupancy: "",
-    no_of_units: "",
-    is_featured: false,
-    co_op_available: false,
-    status: "Upcoming",
-    developer: {
-      name: "",
-    },
+    beds: 0,
+    baths: 0,
+    area: 0,
     city: {
       name: "",
     },
   };
 
-  let developer_stat = {
-    id: 1,
-    name: "",
-    phone: "",
-    website_link: "",
-    details: "",
-    image: null,
-  };
-
   const routee = useRouter();
   const [predata, setPredata] = useState(stat);
   const [cities, setCities] = useState([]);
-  const [developers, setDevelopers] = useState([]);
   const [refetch, setRefetch] = useState(true);
   const [uploadplans, setUploadPlans] = useState([]);
   const [uploadimages, setUploadImages] = useState([]);
-  const [developerdata, setDeveloperData] = useState(developer_stat);
-  const [modaldeveloper, setModalDeveloper] = useState(false);
-
-  const handleCreateDeveloper = (e) => {
-    e.preventDefault();
-    console.log(developerdata);
-    if (
-      developerdata.name == "" ||
-      developerdata.phone == "" ||
-      developerdata.website_link == "" ||
-      developerdata.details == "" ||
-      developerdata.image == null
-    ) {
-      swal({
-        title: "Error!",
-        text: "Please fill all the fields!",
-        icon: "error",
-        button: "Ok",
-      });
-      return;
-    }
-    axios
-      .post("https://api.condomonk.ca/api/developers/", developerdata, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      })
-      .then((res) => {
-        setRefetch(!refetch);
-        setDeveloperData(stat);
-        setModalDeveloper(false);
-      })
-      .catch((err) => {
-        console.log(err.data);
-      });
-  };
 
   const handleImagesChange = (e) => {
     const prevImages = uploadimages;
@@ -97,7 +45,7 @@ export default function Upload() {
 
   useEffect(() => {
     axios
-      .get("https://api.condomonk.ca/api/city/")
+      .get("https://api.assignhome.ca/api/city/")
       .then((res) => {
         console.log(res.data.results);
         setCities(res.data.results);
@@ -109,33 +57,11 @@ export default function Upload() {
       .catch((err) => {
         console.log(err.data);
       });
-
-    axios
-      .get("https://api.condomonk.ca/api/developers/")
-      .then((res) => {
-        console.log(res.data.results);
-        setDevelopers(res.data.results);
-        setPredata((prevState) => ({
-          ...prevState,
-          developer: res.data.results[0],
-        }));
-      })
-      .catch((err) => {
-        console.log(err.data);
-      });
   }, [refetch]);
 
   const handleChange = (e) => {
     const { id, value } = e.target;
     setPredata((prevState) => ({
-      ...prevState,
-      [id]: value,
-    }));
-  };
-
-  const handleChangeDeveloperData = (e) => {
-    const { id, value } = e.target;
-    setDeveloperData((prevState) => ({
       ...prevState,
       [id]: value,
     }));
@@ -161,17 +87,6 @@ export default function Upload() {
     }));
   };
 
-  const handleChangeDev = (e) => {
-    const { id, value } = e.target;
-
-    let mydev = developers.filter((dev) => dev.name === value);
-
-    setPredata((prevState) => ({
-      ...prevState,
-      [id]: mydev[0],
-    }));
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(predata);
@@ -180,13 +95,10 @@ export default function Upload() {
 
     if (
       predata.project_name === "" ||
-      predata.project_address === "" ||
       predata.price_starting_from === "" ||
       predata.price_to === "" ||
       predata.project_type === "" ||
-      predata.status === "" ||
       predata.city.name === "" ||
-      predata.developer.name === "" ||
       predata.occupancy === "" ||
       predata.no_of_units === ""
     ) {
@@ -201,7 +113,7 @@ export default function Upload() {
     };
 
     axios
-      .post("https://api.condomonk.ca/api/preconstructions/", alldata, {
+      .post("https://api.assignhome.ca/api/preconstructions/", alldata, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -231,156 +143,6 @@ export default function Upload() {
 
   return (
     <>
-      {modaldeveloper && (
-        <div className="modal">
-          <section className="modal-main rounded-4">
-            <div className="p-3 py-4 bg-light">
-              <div className="d-flex justify-content-between align-items-center">
-                <p className="fw-bold mb-0">Upload Developer</p>
-                <button
-                  className="btn bg-white btn-outline-danger p-1 py-0"
-                  onClick={() => {
-                    setModalDeveloper(false);
-                    setDeveloperData(stat);
-                  }}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="#ff0000"
-                    className="bi bi-x"
-                    viewBox="0 0 16 16"
-                  >
-                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
-                  </svg>
-                </button>
-              </div>
-              <div className="py-3 mt-2">
-                <div className="row row-cols-1 gy-4">
-                  <div className="col-4">
-                    <div className="form-floating w-100">
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="name"
-                        value={developerdata.name}
-                        onChange={(e) => handleChangeDeveloperData(e)}
-                      />
-                      <label htmlFor="name">
-                        Developer Name <span className="text-danger">*</span>
-                      </label>
-                    </div>
-                  </div>
-                  <div className="col-4">
-                    <div className="form-floating w-100">
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="phone"
-                        value={developerdata.phone}
-                        onChange={(e) => handleChangeDeveloperData(e)}
-                      />
-                      <label htmlFor="phone">
-                        Phone <span className="text-danger">*</span>
-                      </label>
-                    </div>
-                  </div>
-                  <div className="col-4">
-                    <div className="form-floating w-100">
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="website_link"
-                        value={developerdata.website_link}
-                        onChange={(e) => handleChangeDeveloperData(e)}
-                      />
-                      <label htmlFor="website_link">
-                        Website Link <span className="text-danger">*</span>
-                      </label>
-                    </div>
-                  </div>
-                  <div className="col-4">
-                    <div className="w-100">
-                      <label htmlFor="image">
-                        Logo / Banner <span className="text-danger">*</span>
-                      </label>
-                      <input
-                        type="file"
-                        className="form-control"
-                        id="image"
-                        onChange={(e) => {
-                          handleImageChange(e);
-                        }}
-                      />
-                    </div>
-                  </div>
-                  <div className="col-12">
-                    <p className="fw-bold mb-1 mt-2">
-                      About <span className="text-danger">*</span>{" "}
-                    </p>
-                    <ReactQuill
-                      theme="snow"
-                      value={developerdata.details}
-                      style={{ height: "200px" }}
-                      modules={{
-                        toolbar: [
-                          [{ header: "1" }, { header: "2" }, { font: [] }],
-                          [{ size: [] }],
-                          [
-                            "bold",
-                            "italic",
-                            "underline",
-                            "strike",
-                            "blockquote",
-                          ],
-                          [
-                            { list: "ordered" },
-                            { list: "bullet" },
-                            { indent: "-1" },
-                            { indent: "+1" },
-                          ],
-                          ["link", "image", "video"],
-                          ["clean"],
-                        ],
-                        clipboard: {
-                          // toggle to add extra line breaks when pasting HTML:
-                          matchVisual: false,
-                        },
-                      }}
-                      formats={[
-                        "header",
-                        "bold",
-                        "italic",
-                        "underline",
-                        "strike",
-                        "blockquote",
-                        "list",
-                        "bullet",
-                        "link",
-                        "image",
-                        "video",
-                      ]}
-                      onChange={(newText) =>
-                        setDeveloperData((prevState) => ({
-                          ...prevState,
-                          ["details"]: newText,
-                        }))
-                      }
-                    />
-                  </div>
-                </div>
-              </div>
-              <button
-                className="btn btn-success mt-5 d-flex justify-content-center w-100 btn-lg"
-                onClick={(e) => handleCreateDeveloper(e)}
-              >
-                Submit
-              </button>
-            </div>
-          </section>
-        </div>
-      )}
       <div className="bg-white">
         <div className="container-fluid px-minn">
           <div className="d-flex justify-content-between pt-5">
@@ -419,8 +181,9 @@ export default function Upload() {
                     >
                       <option value="Condo">Condo</option>
                       <option value="Townhome">Townhome</option>
-                      <option value="Detached">Detached</option>
                       <option value="Semi-Detached">Semi-Detached</option>
+                      <option value="Detached">Detached</option>
+                      <option value="NaN">NaN</option>
                     </select>
                     <label htmlFor="floatingSelect2">
                       Select Type <span className="text-danger">*</span>
@@ -458,39 +221,17 @@ export default function Upload() {
                     </label>
                   </div>
                 </div>
-
                 <div className="col-4">
                   <div className="form-floating w-100">
-                    <select
-                      className="form-select"
-                      id="co_op_available"
-                      value={predata.co_op_available}
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="beds"
+                      value={predata.beds}
                       onChange={(e) => handleChange(e)}
-                      aira-label="Floating label select example"
-                    >
-                      <option value={false}>Not Available</option>
-                      <option value={true}>Available</option>
-                    </select>
-                    <label htmlFor="co_op_available">
-                      Co Op
-                      <span className="text-danger">*</span>
-                    </label>
-                  </div>
-                </div>
-                <div className="col-4">
-                  <div className="form-floating w-100">
-                    <select
-                      className="form-select"
-                      id="is_featured"
-                      value={predata.is_featured}
-                      onChange={(e) => handleChange(e)}
-                      ariaLabel="Floating label select example"
-                    >
-                      <option value={false}>Not Featured</option>
-                      <option value={true}>Featured</option>
-                    </select>
-                    <label htmlFor="is_featured">
-                      Is Featured ?<span className="text-danger">*</span>
+                    />
+                    <label htmlFor="beds">
+                      Bed <span className="text-danger">*</span>
                     </label>
                   </div>
                 </div>
@@ -499,13 +240,12 @@ export default function Upload() {
                     <input
                       type="text"
                       className="form-control"
-                      min="0"
-                      id="occupancy"
-                      value={predata.occupancy}
+                      id="baths"
+                      value={predata.baths}
                       onChange={(e) => handleChange(e)}
                     />
-                    <label htmlFor="occupancy">
-                      Occupancy <span className="text-danger">*</span>
+                    <label htmlFor="baths">
+                      Bath <span className="text-danger">*</span>
                     </label>
                   </div>
                 </div>
@@ -514,13 +254,12 @@ export default function Upload() {
                     <input
                       type="text"
                       className="form-control"
-                      min="0"
-                      id="no_of_units"
-                      value={predata.no_of_units}
+                      id="area"
+                      value={predata.area}
                       onChange={(e) => handleChange(e)}
                     />
-                    <label htmlFor="no_of_units">
-                      No of units <span className="text-danger">*</span>
+                    <label htmlFor="area">
+                      Area <span className="text-danger">*</span>
                     </label>
                   </div>
                 </div>
@@ -541,44 +280,6 @@ export default function Upload() {
                     <label htmlFor="floatingSelect">
                       Select City <span className="text-danger">*</span>
                     </label>
-                  </div>
-                  {/* <div className="col-12">
-                    <button
-                      className="btn btn-outline-dark mt-2 w-100"
-                      onClick={() => setModalstat(true)}
-                    >
-                      Add New City
-                    </button>
-                  </div> */}
-                </div>
-                <div className="col-4">
-                  <div className="form-floating w-100">
-                    <input
-                      list="devs"
-                      className="form-select"
-                      id="developer"
-                      onChange={(e) => handleChangeDev(e)}
-                    />
-                    <datalist id="devs">
-                      <option value="">---</option>
-                      {developers &&
-                        developers.map((developer) => (
-                          <option key={developer.id} value={developer.name}>
-                            {developer.name}
-                          </option>
-                        ))}
-                    </datalist>
-                    <label htmlFor="developer">
-                      Developer <span className="text-danger">*</span>
-                    </label>
-                  </div>
-                  <div className="col-12">
-                    <button
-                      className="btn btn-outline-dark mt-2 w-100"
-                      onClick={() => setModalDeveloper(true)}
-                    >
-                      Add New Developer
-                    </button>
                   </div>
                 </div>
               </div>

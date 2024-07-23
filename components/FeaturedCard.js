@@ -37,7 +37,7 @@ export default function FeaturedCard(props) {
                 {props.image ? (
                   <img
                     loading="lazy"
-                    src={`https://api.condomonk.ca${props.image.image}`}
+                    src={`https://api.assignhome.ca${props.image.image}`}
                     layout="responsive"
                     className="img-fluid featuredcard-img-top"
                     alt={`${props.project_name} located at ${props.project_address} image`}

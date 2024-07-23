@@ -48,7 +48,7 @@ export default function Partners() {
     }
 
     axios
-      .post("https://api.condomonk.ca/api/partners/", partnerData, {
+      .post("https://api.assignhome.ca/api/partners/", partnerData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -92,7 +92,7 @@ export default function Partners() {
 
     axios
       .put(
-        `https://api.condomonk.ca/api/partners/${partnerData.id}/`,
+        `https://api.assignhome.ca/api/partners/${partnerData.id}/`,
         updatePartnerData,
         {
           headers: {
@@ -148,7 +148,7 @@ export default function Partners() {
 
   function deletePartner(id) {
     axios
-      .delete(`https://api.condomonk.ca/api/partners/${id}/`)
+      .delete(`https://api.assignhome.ca/api/partners/${id}/`)
       .then((res) => {
         console.log(res);
         setRefetch(!refetch);
@@ -160,7 +160,7 @@ export default function Partners() {
 
   useEffect(() => {
     axios
-      .get("https://api.condomonk.ca/api/partners/")
+      .get("https://api.assignhome.ca/api/partners/")
       .then((res) => {
         console.log(res.data.results);
         setPartners(res.data.results);
@@ -170,7 +170,7 @@ export default function Partners() {
       });
 
     axios
-      .get("https://api.condomonk.ca/api/city/")
+      .get("https://api.assignhome.ca/api/city/")
       .then((res) => {
         console.log(res.data.results);
         setCities(res.data.results);
@@ -191,7 +191,7 @@ export default function Partners() {
   const handleEditPartner = (e, id) => {
     e.preventDefault();
     axios
-      .get(`https://api.condomonk.ca/api/partners/${id}/`)
+      .get(`https://api.assignhome.ca/api/partners/${id}/`)
       .then((res) => {
         console.log(res.data);
         setModalVisible(true);

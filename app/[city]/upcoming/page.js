@@ -9,7 +9,7 @@ import Link from "next/link";
 
 async function getData(city) {
   const res = await fetch(
-    "https://api.condomonk.ca/api/preconstructions-city/" +
+    "https://api.assignhome.ca/api/preconstructions-city/" +
       city +
       "?status=Upcoming&page_size=200",
     {
@@ -25,7 +25,7 @@ async function getData(city) {
 }
 
 async function getCities() {
-  const res = await fetch("https://api.condomonk.ca/api/all-city", {
+  const res = await fetch("https://api.assignhome.ca/api/all-city", {
     next: { revalidate: 10 },
   });
 
@@ -42,7 +42,7 @@ const CapitalizeFirst = (city) => {
 const retImage = (data) => {
   if (data.length > 0) {
     if (data[0].image.length > 0 && data[0].image[0].image) {
-      return `https://api.condomonk.ca${data[0].image[0].image}`;
+      return `https://api.assignhome.ca${data[0].image[0].image}`;
     }
   } else {
     return "/social/gta.webp";

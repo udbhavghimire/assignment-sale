@@ -6,7 +6,7 @@ import Link from "next/link";
 import SearchBar from "@/components/SearchBar";
 
 async function getData(city) {
-  const res = await fetch("https://api.condomonk.ca/api/all-precons", {
+  const res = await fetch("https://api.assignhome.ca/api/all-precons", {
     next: { revalidate: 10 },
   });
 
@@ -17,7 +17,7 @@ async function getData(city) {
   return res.json();
 }
 async function getCities() {
-  const res = await fetch("https://api.condomonk.ca/api/all-city", {
+  const res = await fetch("https://api.assignhome.ca/api/all-city", {
     next: { revalidate: 10 },
   });
 
@@ -84,10 +84,7 @@ export default async function Home({ params }) {
               all_data.length > 0 &&
               all_data.map((item) => (
                 <div className="col">
-                  <Link
-                    href={"/" + item.slug}
-                    className="link-black"
-                  >
+                  <Link href={"/" + item.slug} className="link-black">
                     <h4 className="fs-4 fw-bold font-family2">{item.name}</h4>
                   </Link>
                   <div className="maxhh">

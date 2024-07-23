@@ -6,7 +6,7 @@ import Link from "next/link";
 
 async function getData(city) {
   const res = await fetch(
-    "https://api.condomonk.ca/api/preconstructions-city/" + city,
+    "https://api.assignhome.ca/api/preconstructions-city/" + city,
     {
       next: { revalidate: 10 },
     }
@@ -155,7 +155,7 @@ export default async function Home({ params }) {
                     <div className="text-center">
                       {data.partner[0] && (
                         <img
-                          src={`https://api.condomonk.ca${data.partner[0].image}`}
+                          src={`https://api.assignhome.ca${data.partner[0].image}`}
                           alt="dce"
                           className="partner-img"
                         />

@@ -16,7 +16,7 @@ export default function Gallery(props) {
   const newImages = (images) => {
     let neImgs = images;
     neImgs.forEach((image) => {
-      image.image = "https://api.condomonk.ca" + image.image;
+      image.image = "https://api.assignhome.ca" + image.image;
     });
     for (let i = images.length; i < 7; i++) {
       neImgs.push({

@@ -13,7 +13,7 @@ import Map from "@/components/Map";
 // Define your functions outside of the component
 async function getData(slug) {
   const res = await fetch(
-    "https://api.condomonk.ca/api/preconstructions-detail/" + slug,
+    "https://api.assignhome.ca/api/preconstructions-detail/" + slug,
     {
       next: { revalidate: 10 },
     }
@@ -28,7 +28,7 @@ async function getData(slug) {
 
 async function getRelatedData(city) {
   const res = await fetch(
-    "https://api.condomonk.ca/api/related-precons/" + city,
+    "https://api.assignhome.ca/api/related-precons/" + city,
     {
       next: { revalidate: 10 },
     }
@@ -74,7 +74,7 @@ export default async function Home({ params }) {
   const newImages = (images) => {
     let neImgs = images;
     neImgs.forEach((image) => {
-      image.image = "https://api.condomonk.ca" + image.image;
+      image.image = "https://api.assignhome.ca" + image.image;
     });
     for (let i = images.length; i < 7; i++) {
       neImgs.push({
@@ -415,7 +415,7 @@ export default async function Home({ params }) {
                       <div className="col-4">
                         {data.partner[0] && (
                           <img
-                            src={`https://api.condomonk.ca${data.partner[0].image}`}
+                            src={`https://api.assignhome.ca${data.partner[0].image}`}
                             alt="dce"
                             className="partner-img "
                           />

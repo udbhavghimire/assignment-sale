@@ -48,7 +48,7 @@ export default function News() {
     }
 
     axios
-      .post("https://api.condomonk.ca/api/news/", newsdata, {
+      .post("https://api.assignhome.ca/api/news/", newsdata, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -105,7 +105,7 @@ export default function News() {
 
     axios
       .put(
-        `https://api.condomonk.ca/api/news/${newsdata.id}/`,
+        `https://api.assignhome.ca/api/news/${newsdata.id}/`,
         updatenewsdata,
         {
           headers: {
@@ -160,7 +160,7 @@ export default function News() {
 
   function deleteNews(id) {
     axios
-      .delete(`https://api.condomonk.ca/api/news/${id}/`)
+      .delete(`https://api.assignhome.ca/api/news/${id}/`)
       .then((res) => {
         console.log(res);
         setRefetcch(!refetch);
@@ -172,7 +172,7 @@ export default function News() {
 
   useEffect(() => {
     axios
-      .get("https://api.condomonk.ca/api/news/")
+      .get("https://api.assignhome.ca/api/news/")
       .then((res) => {
         console.log(res.data.results);
         setNews(res.data.results);
@@ -182,7 +182,7 @@ export default function News() {
       });
 
     axios
-      .get("https://api.condomonk.ca/api/city/")
+      .get("https://api.assignhome.ca/api/city/")
       .then((res) => {
         console.log(res.data.results);
         setCities(res.data.results);
@@ -203,7 +203,7 @@ export default function News() {
   const handleEdit = (e, id) => {
     e.preventDefault();
     axios
-      .get(`https://api.condomonk.ca/api/news/${id}/`)
+      .get(`https://api.assignhome.ca/api/news/${id}/`)
       .then((res) => {
         console.log(res.data);
         setModalNews(true);
@@ -221,222 +221,224 @@ export default function News() {
     setNewsData(newData);
   };
 
-  return <>
-    {modalnews && (
-      <div className="modal">
-        <section className="modal-main rounded-4">
-          <div className="p-3 py-4 bg-light">
-            <div className="d-flex justify-content-between align-items-center">
-              <p className="fw-bold mb-0">Upload News</p>
-              <button
-                className="btn bg-white btn-outline-danger p-1 py-0"
-                onClick={() => {
-                  setModalNews(false);
-                  setNewsData(stat);
-                  setIsEdit(false);
-                }}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="#ff0000"
-                  className="bi bi-x"
-                  viewBox="0 0 16 16"
+  return (
+    <>
+      {modalnews && (
+        <div className="modal">
+          <section className="modal-main rounded-4">
+            <div className="p-3 py-4 bg-light">
+              <div className="d-flex justify-content-between align-items-center">
+                <p className="fw-bold mb-0">Upload News</p>
+                <button
+                  className="btn bg-white btn-outline-danger p-1 py-0"
+                  onClick={() => {
+                    setModalNews(false);
+                    setNewsData(stat);
+                    setIsEdit(false);
+                  }}
                 >
-                  <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
-                </svg>
-              </button>
-            </div>
-            <div className="py-3 mt-2">
-              <div className="row row-cols-1 gy-4">
-                <div className="col-4">
-                  <div className="form-floating w-100">
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="news_title"
-                      value={newsdata.news_title}
-                      onChange={(e) => handleChange(e)}
-                    />
-                    <label htmlFor="news_title">
-                      News Title <span className="text-danger">*</span>
-                    </label>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="#ff0000"
+                    className="bi bi-x"
+                    viewBox="0 0 16 16"
+                  >
+                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                  </svg>
+                </button>
+              </div>
+              <div className="py-3 mt-2">
+                <div className="row row-cols-1 gy-4">
+                  <div className="col-4">
+                    <div className="form-floating w-100">
+                      <input
+                        type="text"
+                        className="form-control"
+                        id="news_title"
+                        value={newsdata.news_title}
+                        onChange={(e) => handleChange(e)}
+                      />
+                      <label htmlFor="news_title">
+                        News Title <span className="text-danger">*</span>
+                      </label>
+                    </div>
                   </div>
-                </div>
-                <div className="col-4">
-                  <div className="form-floating w-100">
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="news_link"
-                      value={newsdata.news_link}
-                      onChange={(e) => handleChange(e)}
-                    />
-                    <label htmlFor="news_link">
-                      News Link <span className="text-danger">*</span>
-                    </label>
+                  <div className="col-4">
+                    <div className="form-floating w-100">
+                      <input
+                        type="text"
+                        className="form-control"
+                        id="news_link"
+                        value={newsdata.news_link}
+                        onChange={(e) => handleChange(e)}
+                      />
+                      <label htmlFor="news_link">
+                        News Link <span className="text-danger">*</span>
+                      </label>
+                    </div>
                   </div>
-                </div>
-                <div className="col-4">
-                  <div className="form-floating w-100">
-                    <select
-                      className="form-select"
-                      id="city"
-                      value={newsdata.city.name}
-                      onChange={(e) => {
-                        const { value } = e.target;
+                  <div className="col-4">
+                    <div className="form-floating w-100">
+                      <select
+                        className="form-select"
+                        id="city"
+                        value={newsdata.city.name}
+                        onChange={(e) => {
+                          const { value } = e.target;
+                          setNewsData((prevState) => ({
+                            ...prevState,
+                            city: {
+                              name: value,
+                              slug: value.toLowerCase().replace(/ /g, "-"),
+                            },
+                          }));
+                        }}
+                      >
+                        <option value="">Select City</option>
+                        {cities &&
+                          cities.map((city, index) => (
+                            <option key={index} value={city.name}>
+                              {city.name}
+                            </option>
+                          ))}
+                      </select>
+                      <label htmlFor="city">
+                        City <span className="text-danger">*</span>
+                      </label>
+                    </div>
+                  </div>
+                  <div className="col-4">
+                    <div className="w-100">
+                      {isEdit && (
+                        <img
+                          src={newsdata.news_thumbnail}
+                          alt=""
+                          className="img-fluid"
+                        />
+                      )}
+                      <label htmlFor="image">
+                        {!isEdit && (
+                          <>
+                            News Thumbnail{" "}
+                            <span className="text-danger">*</span>
+                          </>
+                        )}
+                        {isEdit && (
+                          <>
+                            News Thumbnail{" "}
+                            <span className="text-danger">*</span>
+                          </>
+                        )}
+                      </label>
+                      <input
+                        type="file"
+                        className="form-control py-3"
+                        id="news_thumbnail"
+                        onChange={(e) => {
+                          handleImageChange(e);
+                        }}
+                      />
+                    </div>
+                  </div>
+                  <div className="col-12">
+                    <p className="fw-bold ms-2 mb-1 mt-2">
+                      News Detail <span className="text-danger">*</span>{" "}
+                    </p>
+                    <ReactQuill
+                      theme="snow"
+                      value={newsdata.news_description}
+                      style={{ height: "250px" }}
+                      modules={{
+                        toolbar: [
+                          [{ header: "1" }, { header: "2" }, { font: [] }],
+                          [{ size: [] }],
+                          [
+                            "bold",
+                            "italic",
+                            "underline",
+                            "strike",
+                            "blockquote",
+                          ],
+                          [
+                            { list: "ordered" },
+                            { list: "bullet" },
+                            { indent: "-1" },
+                            { indent: "+1" },
+                          ],
+                          ["link", "image", "video"],
+                          ["clean"],
+                        ],
+                        clipboard: {
+                          // toggle to add extra line breaks when pasting HTML:
+                          matchVisual: false,
+                        },
+                      }}
+                      formats={[
+                        "header",
+                        "bold",
+                        "italic",
+                        "underline",
+                        "strike",
+                        "blockquote",
+                        "list",
+                        "bullet",
+                        "link",
+                        "image",
+                        "video",
+                      ]}
+                      onChange={(newText) =>
                         setNewsData((prevState) => ({
                           ...prevState,
-                          city: {
-                            name: value,
-                            slug: value.toLowerCase().replace(/ /g, "-"),
-                          },
-                        }));
-                      }}
-                    >
-                      <option value="">Select City</option>
-                      {cities &&
-                        cities.map((city, index) => (
-                          <option key={index} value={city.name}>
-                            {city.name}
-                          </option>
-                        ))}
-                    </select>
-                    <label htmlFor="city">
-                      City <span className="text-danger">*</span>
-                    </label>
-                  </div>
-                </div>
-                <div className="col-4">
-                  <div className="w-100">
-                    {isEdit && (
-                      <img
-                        src={newsdata.news_thumbnail}
-                        alt=""
-                        className="img-fluid"
-                      />
-                    )}
-                    <label htmlFor="image">
-                      {!isEdit && (
-                        <>
-                          News Thumbnail{" "}
-                          <span className="text-danger">*</span>
-                        </>
-                      )}
-                      {isEdit && (
-                        <>
-                          News Thumbnail{" "}
-                          <span className="text-danger">*</span>
-                        </>
-                      )}
-                    </label>
-                    <input
-                      type="file"
-                      className="form-control py-3"
-                      id="news_thumbnail"
-                      onChange={(e) => {
-                        handleImageChange(e);
-                      }}
+                          ["news_description"]: newText,
+                        }))
+                      }
                     />
                   </div>
                 </div>
-                <div className="col-12">
-                  <p className="fw-bold ms-2 mb-1 mt-2">
-                    News Detail <span className="text-danger">*</span>{" "}
-                  </p>
-                  <ReactQuill
-                    theme="snow"
-                    value={newsdata.news_description}
-                    style={{ height: "250px" }}
-                    modules={{
-                      toolbar: [
-                        [{ header: "1" }, { header: "2" }, { font: [] }],
-                        [{ size: [] }],
-                        [
-                          "bold",
-                          "italic",
-                          "underline",
-                          "strike",
-                          "blockquote",
-                        ],
-                        [
-                          { list: "ordered" },
-                          { list: "bullet" },
-                          { indent: "-1" },
-                          { indent: "+1" },
-                        ],
-                        ["link", "image", "video"],
-                        ["clean"],
-                      ],
-                      clipboard: {
-                        // toggle to add extra line breaks when pasting HTML:
-                        matchVisual: false,
-                      },
-                    }}
-                    formats={[
-                      "header",
-                      "bold",
-                      "italic",
-                      "underline",
-                      "strike",
-                      "blockquote",
-                      "list",
-                      "bullet",
-                      "link",
-                      "image",
-                      "video",
-                    ]}
-                    onChange={(newText) =>
-                      setNewsData((prevState) => ({
-                        ...prevState,
-                        ["news_description"]: newText,
-                      }))
-                    }
-                  />
-                </div>
               </div>
+              {!isEdit && (
+                <button
+                  className="btn btn-success mt-5 d-flex justify-content-center w-100 btn-lg"
+                  onClick={(e) => handleCreateNews(e)}
+                >
+                  Submit
+                </button>
+              )}
+              {isEdit && (
+                <button
+                  className="btn btn-success mt-5 d-flex justify-content-center w-100 btn-lg"
+                  onClick={(e) => handleUpdateNews(e)}
+                >
+                  Update Now
+                </button>
+              )}
             </div>
-            {!isEdit && (
-              <button
-                className="btn btn-success mt-5 d-flex justify-content-center w-100 btn-lg"
-                onClick={(e) => handleCreateNews(e)}
-              >
-                Submit
-              </button>
-            )}
-            {isEdit && (
-              <button
-                className="btn btn-success mt-5 d-flex justify-content-center w-100 btn-lg"
-                onClick={(e) => handleUpdateNews(e)}
-              >
-                Update Now
-              </button>
-            )}
+          </section>
+        </div>
+      )}
+      <div className="py-4 w-100 ">
+        <div className="row row-cols-1 row-cols-md-5 d-flex align-items-center mx-0">
+          <div className="col-md-8">
+            <h5 className="fw-bold mb-0">News</h5>
           </div>
-        </section>
-      </div>
-    )}
-    <div className="py-4 w-100 ">
-      <div className="row row-cols-1 row-cols-md-5 d-flex align-items-center mx-0">
-        <div className="col-md-8">
-          <h5 className="fw-bold mb-0">News</h5>
-        </div>
-        <div className="col-md-4 d-flex justify-content-end">
-          <button
-            className="btn btn-success py-3"
-            onClick={() => setModalNews(true)}
-          >
-            Add New News
-          </button>
+          <div className="col-md-4 d-flex justify-content-end">
+            <button
+              className="btn btn-success py-3"
+              onClick={() => setModalNews(true)}
+            >
+              Add New News
+            </button>
+          </div>
         </div>
       </div>
-    </div>
-    <div className="mt-4"></div>
-    <NewsTable
-      news={news}
-      handleEdit={handleEdit}
-      handleDelete={handleDelete}
-    ></NewsTable>
-  </>;
+      <div className="mt-4"></div>
+      <NewsTable
+        news={news}
+        handleEdit={handleEdit}
+        handleDelete={handleDelete}
+      ></NewsTable>
+    </>
+  );
 }
