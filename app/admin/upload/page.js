@@ -387,7 +387,7 @@ export default function Upload() {
             <Link href="/admin/" className="btn bg-white shadow">
               Go Back
             </Link>
-            <h4 className="fw-bold">Upload New Pre Construction</h4>
+            <h4 className="fw-bold">Upload New Assignment</h4>
           </div>
         </div>
         <div className="container-fluid px-minn py-5 mydetaill">
@@ -404,20 +404,6 @@ export default function Upload() {
                       onChange={(e) => handleChange(e)}
                     />
                     <label htmlFor="projectname">
-                      Project Name <span className="text-danger">*</span>
-                    </label>
-                  </div>
-                </div>
-                <div className="col-4">
-                  <div className="form-floating w-100">
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="project_address"
-                      value={predata.project_address}
-                      onChange={(e) => handleChange(e)}
-                    />
-                    <label htmlFor="projectaddress">
                       Project Address <span className="text-danger">*</span>
                     </label>
                   </div>
@@ -472,26 +458,7 @@ export default function Upload() {
                     </label>
                   </div>
                 </div>
-                <div className="col-4">
-                  <div className="form-floating w-100">
-                    <select
-                      className="form-select"
-                      id="status"
-                      value={predata.status}
-                      onChange={(e) => handleChange(e)}
-                      aira-label="Floating label select example"
-                    >
-                      <option value="Selling">Selling</option>
-                      <option value="Upcoming">Upcoming</option>
-                      <option value="Archived">Archived</option>
-                      <option value="Sold out">Sold out</option>
-                      <option value="Planning Phase">Planning Phase</option>
-                    </select>
-                    <label htmlFor="status">
-                      Status <span className="text-danger">*</span>
-                    </label>
-                  </div>
-                </div>
+
                 <div className="col-4">
                   <div className="form-floating w-100">
                     <select

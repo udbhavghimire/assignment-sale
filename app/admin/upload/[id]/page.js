@@ -417,7 +417,7 @@ export default function Update({ params }) {
             <Link href="/admin/" className="btn bg-white shadow">
               Go Back
             </Link>
-            <h4 className="fw-bold">Upload New Pre Construction</h4>
+            <h4 className="fw-bold">Upload New Assignment</h4>
           </div>
         </div>
         <div className="container-fluid px-minn py-5 mydetaill">

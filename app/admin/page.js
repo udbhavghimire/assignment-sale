@@ -163,7 +163,7 @@ export default function Home() {
           </div>
           <div className="col-md-3 d-flex justify-content-end">
             <Link href="/admin/upload/" className="btn btn-success py-3">
-              Add New Preconstruction
+              Add New Assignment
             </Link>
           </div>
         </div>

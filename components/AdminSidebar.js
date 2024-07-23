@@ -14,7 +14,7 @@ const AdminSidebar = () => {
             href="/admin/"
           >
             <i className="bi bi-grid"></i>
-            <span>Preconstructions</span>
+            <span>Assignment</span>
           </Link>
         </li>
         <li className="nav-item">
@@ -30,7 +30,7 @@ const AdminSidebar = () => {
             <span>Cities</span>
           </Link>
         </li>
-        <li className="nav-item">
+        {/* <li className="nav-item">
           <Link
             className={
               pathname.startsWith("/admin/developers")
@@ -42,7 +42,7 @@ const AdminSidebar = () => {
             <i className="bi bi-bricks"></i>
             <span>Developers</span>
           </Link>
-        </li>
+        </li> */}
         <li className="nav-item">
           <Link
             className={
