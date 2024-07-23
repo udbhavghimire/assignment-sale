@@ -9,9 +9,7 @@ import FeaturedCard from "@/components/FeaturedCard";
 
 async function getData(city) {
   const res = await fetch(
-    "https://api.assignhome.ca/api/preconstructions-city/" +
-      city +
-      "?page_size=10",
+    "https://api.assignhome.ca/api/preconstructions/?page_size=10",
     {
       next: { revalidate: 10 },
     }
@@ -45,44 +43,10 @@ async function getFeaturedData() {
   return res.json();
 }
 export default async function Home(props) {
-  const data = await getData("calgary");
-  const mississauga_data = await getData("mississauga");
-  const edmonton_data = await getData("edmonton");
-  const cambridge_data = await getData("cambridge");
-  let cities = await getCities();
-  // let dropdown_cities = await getCitiesandProjects();
-  const featured = await getFeaturedData();
-
-  const filteredprojects = (value) => {
-    return dropdown_cities.filter((city) => {
-      return value.includes(city.name);
-    });
-  };
+  const data = await getData();
 
   return (
     <>
-      {/* 
-      <section id="hero">
-        <div className="container">
-          <div className=" hero-container">
-            <div>
-              <h1 className="main-titlee pb-0  mb-0 mt-2 mt-md-0 ">
-                <span className="d-block ">Canada's</span> leading{" "}
-                <span className="text-warning">pre construction </span>homes
-                Platform
-              </h1>
-              <p className="titlee text-center mt-0 pt-1 text-white">
-                Get first updates on New Construction Homes Projects across
-                Canada
-              </p>
-            </div>
-
-            <div className="pb-1 pt-3 d-flex justify-content-center align-items-center">
-            </div>
-          </div>
-        </div>
-      </section> */}
-
       <div className="pt-5 ">
         <div className="container pt-5 " id="projects">
           <div className="d-flex align-items-center justify-content-center">
@@ -102,8 +66,8 @@ export default async function Home(props) {
             </Link>
           </div>
           <div className="row row-cols-1 row-cols-md-4 gy-md-5 gx-3">
-            {data.preconstructions &&
-              data.preconstructions.slice(0, 8).map((item) => (
+            {data.results &&
+              data.results.slice(0, 8).map((item) => (
                 <div className="col" key={item.id}>
                   <script
                     key={item.slug}
@@ -208,71 +172,6 @@ export default async function Home(props) {
                 </Link>
               </div>
             </div>
-          </div>
-          <div className="py-5 my-2"></div>
-          <div className="d-flex align-items-center justify-content-center ">
-            <h2 className="fw-mine ccent-line fs-big">
-              <Link href={"/mississauga"} className="link-black font-family2">
-                Assignment For Sale in Mississauga
-              </Link>
-            </h2>
-          </div>
-          <div className="d-flex flex-column justify-content-center flex-column align-items-center mb-5">
-            <p className="fs-5 mb-0 text-center">
-              Explore 30+ Assignment for Sale in Mississauga
-            </p>
-            <Link href={"/mississauga"} className="mt-1 text-mine text-danger">
-              More Assignments in Mississauga{" "}
-              <i className="bi bi-arrow-right-short"></i>
-            </Link>
-          </div>
-          <div className="row row-cols-1 row-cols-md-4 gy-md-5 gy-3 gx-3">
-            {mississauga_data.preconstructions &&
-              mississauga_data.preconstructions.slice(0, 8).map((item) => (
-                <div className="col" key={item.id}>
-                  <script
-                    key={item.slug}
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{
-                      __html: JSON.stringify(PreconSchema(item)),
-                    }}
-                  />
-                  <CondoCard {...item} />
-                </div>
-              ))}
-          </div>
-
-          <div className="py-5 my-2"></div>
-          <div className="d-flex align-items-center justify-content-center ">
-            <h2 className="fw-mine ccent-line fs-big ">
-              <Link href={"/edmonton"} className="link-black font-family2">
-                Assignment For Sale in Edmonton
-              </Link>
-            </h2>
-          </div>
-          <div className="d-flex flex-column justify-content-center flex-column align-items-center mb-5">
-            <p className="fs-5 mb-0 text-center">
-              Explore 30+ Assignment for Sale in Edmonton
-            </p>
-            <Link href={"/edmonton"} className="mt-1 text-mine text-danger">
-              More Assignments in Edmonton{" "}
-              <i className="bi bi-arrow-right-short"></i>
-            </Link>
-          </div>
-          <div className="row row-cols-1 row-cols-md-4 gy-md-5 gy-3 gx-3">
-            {edmonton_data.preconstructions &&
-              edmonton_data.preconstructions.slice(0, 8).map((item) => (
-                <div className="col" key={item.id}>
-                  <script
-                    key={item.slug}
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{
-                      __html: JSON.stringify(PreconSchema(item)),
-                    }}
-                  />
-                  <CondoCard {...item} />
-                </div>
-              ))}
           </div>
 
           <div className="py-5 my-2"></div>
