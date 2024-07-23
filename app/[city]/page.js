@@ -119,7 +119,7 @@ export default async function Home({ params }) {
           <div className="mt-md-5 mt-0"></div>
           <div className="row row-cols-1 row-cols-md-4  gy-4 gx-3 gx-lg-3 ">
             {data.preconstructions &&
-              filteredprojects("Selling").map((item, no) => (
+              data.preconstructions.map((item, no) => (
                 <div className="col" key={item.id}>
                   <script
                     key={item.slug}
@@ -151,55 +151,6 @@ export default async function Home({ params }) {
               <div className="row row-cols-1 row-cols-md-3 mt-5">
                 <div className="col-md-3"></div>
                 <div className="col-md-6" id="contact">
-                  <div className="d-flex gap-5 justify-content-center align-items-center pb-4">
-                    <div className="text-center">
-                      {data.partner[0] && (
-                        <img
-                          src={`https://api.assignhome.ca${data.partner[0].image}`}
-                          alt="dce"
-                          className="partner-img"
-                        />
-                      )}
-                      {!data.partner[0] && (
-                        <img
-                          src="/contact-bottom-2.png"
-                          alt="dce"
-                          className="partner-img "
-                        />
-                      )}
-                    </div>
-                    <div className="text-center">
-                      <h5 className="fw-bold  fs-5 ">
-                        {data.partner[0] &&
-                          data.partner[0].partner_type != "Brokerage" && (
-                            <>{data.partner[0].name}</>
-                          )}
-
-                        {!data.partner[0] && "Receive a Call"}
-                      </h5>
-
-                      <span className="mt-5 fs-6 text-center">
-                        {data.partner[0] && data.partner[0].brokerage_name}
-                      </span>
-
-                      <p
-                        className="mb-0 bva2  mt-1 text-xs d-flex justify-content-center"
-                        data-tip
-                        data-for="registerTip"
-                      >
-                        Condomonk Verified Partner
-                        <span>
-                          <sup>
-                            <img
-                              src="/cc.png"
-                              alt="verfied"
-                              className="img-fluid small-i ms-1"
-                            />
-                          </sup>
-                        </span>
-                      </p>
-                    </div>
-                  </div>
                   <BottomContactForm
                     proj_name="City Page"
                     city={data.city.name}

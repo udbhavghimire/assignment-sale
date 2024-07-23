@@ -47,20 +47,16 @@ export async function generateMetadata({ params }, parent) {
   return {
     ...parent,
     alternates: {
-      canonical: `https://condomonk.ca/${params.city}/${params.slug}`,
+      canonical: `https://assignhome.ca/${params.city}/${params.slug}`,
     },
     title:
       data.preconstruction.project_name +
       " in " +
-      data.preconstruction.city.name +
-      " by " +
-      data.preconstruction.developer.name,
+      data.preconstruction.city.name,
     description:
       data.preconstruction.project_name +
       " in " +
       data.preconstruction.city.name +
-      " by " +
-      data.preconstruction.developer.name +
       " prices starting from " +
       Nformatter(data.preconstruction.price_starting_from, 2) +
       " CAD",

@@ -14,7 +14,6 @@ const PreconSchema = (listing) => {
       listing.city.name +
       " with great features " +
       " and in high demand all over Canada.",
-    brand: listing.developer.name,
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: "4",
