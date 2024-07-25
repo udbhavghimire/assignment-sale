@@ -9,7 +9,9 @@ import FeaturedCard from "@/components/FeaturedCard";
 
 async function getData(city) {
   const res = await fetch(
-    "https://api.assignhome.ca/api/preconstructions/?page_size=10",
+    "https://api.assignhome.ca/api/preconstructions-city/" +
+      city +
+      "?page_size=10",
     {
       next: { revalidate: 10 },
     }
@@ -43,13 +45,22 @@ async function getFeaturedData() {
   return res.json();
 }
 export default async function Home(props) {
-  const data = await getData();
+  const data = await getData("calgary");
+  let cities = await getCities();
+  // let dropdown_cities = await getCitiesandProjects();
+  // const featured = await getFeaturedData();
+
+  const filteredprojects = (value) => {
+    return dropdown_cities.filter((city) => {
+      return value.includes(city.name);
+    });
+  };
 
   return (
     <>
       <div className="pt-5 ">
         <div className="container pt-5 " id="projects">
-          <div className="d-flex align-items-center justify-content-center">
+          <div className="d-flex align-items-center justify-content-center text-center">
             <h2 className="fw-mine ccent-line fs-big ">
               <Link href={"/calgary"} className="link-black font-family2">
                 Assignment For Sale in Calgary
@@ -65,9 +76,9 @@ export default async function Home(props) {
               <i className="bi bi-arrow-right-short"></i>
             </Link>
           </div>
-          <div className="row row-cols-1 row-cols-md-4 gy-md-5 gx-3">
-            {data.results &&
-              data.results.slice(0, 8).map((item) => (
+          <div className="row row-cols-2 row-cols-md-4  gy-4 gx-3 gx-lg-3 ">
+            {data.preconstructions &&
+              data.preconstructions.map((item, no) => (
                 <div className="col" key={item.id}>
                   <script
                     key={item.slug}
@@ -76,7 +87,7 @@ export default async function Home(props) {
                       __html: JSON.stringify(PreconSchema(item)),
                     }}
                   />
-                  <CondoCard {...item} />
+                  <CondoCard {...item} no={no} />
                 </div>
               ))}
           </div>
@@ -204,7 +215,7 @@ export default async function Home(props) {
                 />
               </div>
               <h2 className="fw-bolder fw-boldie text-center px-md-4 fs-3 ">
-                Looking to buy a preconstruction home ?
+                Looking to buy a preconstruction assignment ?
               </h2>
 
               <div className="row row-cols-1 row-cols-md-3 mt-5">
@@ -216,16 +227,16 @@ export default async function Home(props) {
                   ></BottomContactForm>
                   <div className="d-flex">
                     <p className="small-text2 mb-3 text-center">
-                      Condomonk.ca serves as an online database for
-                      pre-construction homes. Condomonk compiles a list of
-                      projects available publicly on the internet and does not
-                      engage in real estate transactions. Please note that the
-                      information provided on this page may be outdated or
-                      inaccurate. By submitting the above form, you consent to
-                      being contacted by real estate agents advertising on this
-                      page. Your information may be shared with our partners or
-                      advertisers to assist with your inquiries. You can
-                      unsubscribe at any time by emailing us.
+                      Assignhome.ca serves as an online database for assignment
+                      sale. Assignhome compiles a list of assignments available
+                      publicly on the internet and does not engage in real
+                      estate transactions. Please note that the information
+                      provided on this page may be outdated or inaccurate. By
+                      submitting the above form, you consent to being contacted
+                      by real estate agents advertising on this page. Your
+                      information may be shared with our partners or advertisers
+                      to assist with your inquiries. You can unsubscribe at any
+                      time by emailing us.
                     </p>
                   </div>
                 </div>

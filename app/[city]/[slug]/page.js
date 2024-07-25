@@ -72,7 +72,7 @@ export default async function Home({ params }) {
     for (let i = images.length; i < 7; i++) {
       neImgs.push({
         id: 0,
-        image: "https://condomonk.ca/noimage.webp",
+        image: "https://Assignhome.ca/noimage.webp",
       });
     }
     return neImgs;
@@ -350,18 +350,18 @@ export default async function Home({ params }) {
                       <div className="pt-5">
                         <p className="text-small text-secondary">
                           Note:{" "}
-                          <Link href="https://condomonk.ca/" target="_blank">
-                            Condomonk
+                          <Link href="https://Assignhome.ca/" target="_blank">
+                            Assignhome
                           </Link>{" "}
                           is Canada's one of the largest database of new pre
                           construction homes. Our comprehensive database is
                           populated by our research and analysis of publicly
-                          available data.preconstruction. Condomonk strives for
+                          available data.preconstruction. Assignhome strives for
                           accuracy and we make every effort to verify the
-                          information. The information provided on Condomonk.ca
-                          may be outdated or inaccurate. Condomonk Inc. is not
+                          information. The information provided on Assignhome.ca
+                          may be outdated or inaccurate. Assignhome Inc. is not
                           liable for the use or misuse of the site's
-                          information.The information displayed on condomonk.ca
+                          information.The information displayed on Assignhome.ca
                           is for reference only. Please contact a liscenced real
                           estate agent or broker to seek advice or receive
                           updated and accurate information.
@@ -419,7 +419,7 @@ export default async function Home({ params }) {
                           data-tip
                           data-for="registerTip"
                         >
-                          Condomonk Verified Partner
+                          Assignhome Verified Partner
                           <span>
                             <sup>
                               <img
@@ -463,11 +463,11 @@ export default async function Home({ params }) {
                     ></SideContactForm>
                     <div className="d-flex">
                       <p className="small-text2 mb-3 text-center">
-                        Condomonk.ca serves as an online database for
-                        pre-construction homes. Condomonk compiles a list of
-                        projects available publicly on the internet and does not
-                        engage in real estate transactions. Please note that the
-                        information provided on this page may be outdated or
+                        Assignhome.ca serves as an online database for
+                        assignment sale. Assignhome compiles a list of
+                        assignment available publicly on the internet and does
+                        not engage in real estate transactions. Please note that
+                        the information provided on this page may be outdated or
                         inaccurate. By submitting the above form, you consent to
                         being contacted by real estate agents advertising on
                         this page. Your information may be shared with our

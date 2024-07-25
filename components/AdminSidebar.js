@@ -43,7 +43,7 @@ const AdminSidebar = () => {
             <span>Developers</span>
           </Link>
         </li> */}
-        <li className="nav-item">
+        {/* <li className="nav-item">
           <Link
             className={
               pathname.startsWith("/admin/events")
@@ -55,8 +55,8 @@ const AdminSidebar = () => {
             <i className="bi bi-calendar-check"></i>
             <span>Events</span>
           </Link>
-        </li>
-        <li className="nav-item">
+        </li> */}
+        {/* <li className="nav-item">
           <Link
             className={
               pathname.startsWith("/admin/news")
@@ -68,8 +68,8 @@ const AdminSidebar = () => {
             <i className="bi bi-newspaper"></i>
             <span>News</span>
           </Link>
-        </li>
-        <li className="nav-item">
+        </li> */}
+        {/* <li className="nav-item">
           <Link
             className={
               pathname.startsWith("/admin/partners")
@@ -81,7 +81,7 @@ const AdminSidebar = () => {
             <i className="bi bi-person-fill"></i>
             <span>Partners</span>
           </Link>
-        </li>
+        </li> */}
       </ul>
     </aside>
   );

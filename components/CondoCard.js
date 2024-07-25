@@ -34,12 +34,12 @@ export default function CondoCard(props) {
             className="mylinkk"
             target="_blank"
           >
-            {props.image ? (
+            {props.image.length > 0 ? (
               <img
                 loading="lazy"
-                src={props.image[0].image}
+                src={`https://api.assignhome.ca${props.image[0].image}`}
                 layout="responsive"
-                className="img-fluid condocard-img-top"
+                className=" condocard-img-top"
                 alt={`${props.project_name} located at ${props.project_address} image`}
                 fetchPriority="high"
               />
@@ -48,7 +48,7 @@ export default function CondoCard(props) {
                 loading="lazy"
                 src="/noimage.webp"
                 layout="responsive"
-                className="img-fluid condocard-img-top"
+                className=" condocard-img-top"
                 alt={`no image available for ${props.project_name}`}
                 fetchPriority="high"
               />
