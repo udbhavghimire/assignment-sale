@@ -47,13 +47,15 @@ const Navbar = ({ cities, dropdown_cities, transparent }) => {
           <div className="d-flex">
             <Link
               href="/"
-              className="logo d-flex justify-content-center align-items-center pe-1 font-family2"
+              className="logo d-flex justify-content-center align-items-center pe-1 font-family2 text-sm"
             >
-              <span>AssignHome</span>
+              <span>
+                Propertyassign<span className="text-danger">.</span>{" "}
+              </span>
             </Link>
             <div
               className="input-group input-group-search
-             me-md-0"
+             me-md-0 "
             >
               {/* <ProjectSearch /> */}
               <SearchSuggest cities={cities} />

@@ -1,23 +1,7 @@
-import CondoCard from "@/components/CondoCard";
+import React from "react";
+import Filters from "@/components/Filters";
 import BottomContactForm from "@/components/BottomContactForm";
-import { notFound } from "next/navigation";
-import PreconSchema from "@/components/PreconSchema";
 import Link from "next/link";
-
-async function getData(city) {
-  const res = await fetch(
-    "https://api.assignhome.ca/api/preconstructions-city/" + city,
-    {
-      next: { revalidate: 10 },
-    }
-  );
-
-  if (!res.ok) {
-    notFound();
-  }
-
-  return res.json();
-}
 
 const CapitalizeFirst = (city) => {
   return city.charAt(0).toUpperCase() + city.slice(1);
@@ -25,190 +9,77 @@ const CapitalizeFirst = (city) => {
 
 export async function generateMetadata({ params }, parent) {
   let city = CapitalizeFirst(params.city);
-  const data = await getData(params.city);
   return {
     ...parent,
     alternates: {
       canonical: `https://condomonk.ca/${params.city}`,
     },
-    title:
-      "Top " +
-      data.preconstructions.length +
-      " New condos, townhomes and detached home assignment sales in " +
-      city,
-    description: "New assignment sales in " + city,
-    description:
-      "Discover stunning new condos, townhouse and detached homes assignment sales in " +
-      city +
-      ". Find your dream property in our latest developments. Tour new builds today!",
+    title: `Top New condos, townhomes and detached home assignment sales in ${city}`,
+    description: `Discover stunning new condos, townhouse and detached homes assignment sales in ${city}. Find your dream property in our latest developments. Tour new builds today!`,
   };
 }
 
-export default async function Home({ params }) {
-  const data = await getData(params.city);
+export default function Home({ params }) {
+  let filteredProjects = [];
 
-  const filteredprojects = (value) => {
-    return data.preconstructions.filter((item) => item.status == value);
+  const handleFilteredData = (data) => {
+    filteredProjects = data;
   };
+
   return (
     <>
       <div className="pt-lg-5 pt-3">
         <div className="container">
-          <div className="d-flex ">
+          <div className="d-flex">
             <div>
               <h1 className="main-title font-family2 pb-2 pb-md-0">
                 Assignments for Sale in {CapitalizeFirst(params.city)}{" "}
                 <span className="nextline-sm"> ( 2024 )</span>
               </h1>
             </div>
-            {/* <div className="">
-              <span class="absolute-design-border">
-                <svg
-                  width="146"
-                  height="14"
-                  viewBox="0 0 146 14"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M2 4.5L144 2L2 12L144 9"
-                    stroke="#FFC007"
-                    stroke-width="3"
-                    stroke-linecap="round"
-                  ></path>
-                </svg>
-              </span>
-            </div> */}
           </div>
           <p className="font-normal sm-center pb-2 pb-md-0 mb-0 fw-medium text-lg">
-            {data.preconstructions.length} New condo, townhouse, or detached
-            home assignment for sale in {CapitalizeFirst(params.city)}.
+            Discover new condo, townhouse, or detached home assignments for sale
+            in {CapitalizeFirst(params.city)}.
           </p>
-          {/* <div className="d-flex sm-center  mb-lg-0 sticky-buttons pb-0 mb-0">
-            <div className="d-flex flex-column flex-md-row mb-md-2 mb-0 mt-1 overflow-hidden">
-              <div className="d-flex gap-2">
-                <Link
-                  className="link-black badge py-2 my-1 bg-white shadow-sm text-dark fs-small fw-m"
-                  href={`/${params.city}/upcoming/`}
-                >
-                  Upcoming Projects {CapitalizeFirst(params.city)}
-                </Link>
-                <Link
-                  className="link-black badge py-2 my-1 bg-white shadow-sm text-dark fs-small fw-m mx-0 me-2"
-                  href={`/${params.city}/townhomes/`}
-                >
-                  New Townhomes {CapitalizeFirst(params.city)}
-                </Link>
+          <Filters
+            city={params.city}
+            /* setFilteredProjects={handleFilteredData} */
+          />
+          {/* <div className="row row-cols-1 row-cols-md-4 gy-4 gx-3 gx-lg-3">
+            {filteredProjects.map((item, no) => (
+              <div className="col" key={item.id}>
+                <script
+                  key={item.slug}
+                  type="application/ld+json"
+                  dangerouslySetInnerHTML={{
+                    __html: JSON.stringify(PreconSchema(item)),
+                  }}
+                />
+                <CondoCard {...item} no={no} />
               </div>
-              <div className="d-flex gap-2">
-                <Link
-                  className="link-black badge py-2 my-1 bg-white shadow-sm text-dark fs-small fw-m"
-                  href={`/${params.city}/detached/`}
-                >
-                  New Detached Homes {CapitalizeFirst(params.city)}
-                </Link>
-                <Link
-                  className="link-black badge py-2 my-1 bg-white shadow-sm text-dark fs-small fw-m mx-0"
-                  href={`/${params.city}/condos/`}
-                >
-                  New Condos {CapitalizeFirst(params.city)}
-                </Link>
-              </div>
-            </div>
+            ))}
           </div> */}
-          <div className="mt-md-5 mt-0"></div>
-          <div className="row row-cols-1 row-cols-md-4  gy-4 gx-3 gx-lg-3 ">
-            {data.preconstructions &&
-              data.preconstructions.map((item, no) => (
-                <div className="col" key={item.id}>
-                  <script
-                    key={item.slug}
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{
-                      __html: JSON.stringify(PreconSchema(item)),
-                    }}
-                  />
-                  <CondoCard {...item} no={no} />
-                </div>
-              ))}
-          </div>
-          <div className="pt-5 mt-5"></div>
-          <div className="pt-5"></div>
-
-          <div className="pt-5 mt-5"></div>
           <div className="pt-5 mt-5"></div>
           <div className="py-5 my-5" id="contact">
             <div className="container">
-              {/* <div className="row justify-content-center">
-                <img
-                  src="/contact-bottom-2.png"
-                  alt="dce"
-                  className="img-fluid w-25 w-smm-50 mb-3"
-                />
-              </div> */}
               <h2 className="fw-bolder fw-boldie text-center px-md-4 fs-3"></h2>
-
               <div className="row row-cols-1 row-cols-md-3 mt-5">
                 <div className="col-md-3"></div>
                 <div className="col-md-6" id="contact">
-                  <BottomContactForm
-                    proj_name="City Page"
-                    city={data.city.name}
-                  ></BottomContactForm>
+                  <BottomContactForm />
                   <div className="d-flex text-center">
                     <p className="small-text2 mb-3 text-center">
                       Condomonk.ca serves as an online database for
                       pre-construction homes. Condomonk compiles a list of
                       projects available publicly on the internet and does not
-                      engage in real estate transactions. Please note that the
-                      information provided on this page may be outdated or
-                      inaccurate. By submitting the above form, you consent to
-                      being contacted by real estate agents advertising on this
-                      page. Your information may be shared with our partners or
-                      advertisers to assist with your inquiries. You can
-                      unsubscribe at any time by emailing us.
+                      engage in real estate transactions.
                     </p>
                   </div>
                 </div>
                 <div className="col-md-3"></div>
               </div>
             </div>
-          </div>
-          <div className="pt-5 mt-5"></div>
-          <div className="pt-5 mt-5"></div>
-          <div className="pt-5 mt-5"></div>
-          <div className="py-5">
-            {data.city && (
-              <div className="container" id="make-img-responsive">
-                <div className="row row-cols-1 g-0">
-                  <div
-                    className="col-12 mt-mine px-3 max-w-100 iframe-container "
-                    dangerouslySetInnerHTML={{
-                      __html: data.city.details,
-                    }}
-                  ></div>
-                  <div className="pt-5">
-                    <p className="text-small text-secondary text-center">
-                      Note:{" "}
-                      <Link href="https://condomonk.ca/" target="_blank">
-                        Condomonk
-                      </Link>{" "}
-                      is Canada's one of the largest database of new pre
-                      construction homes. Our comprehensive database is
-                      populated by our research and analysis of publicly
-                      available data. Condomonk strives for accuracy and we make
-                      every effort to verify the information. The information
-                      provided on Condomonk.ca may be outdated or inaccurate.
-                      Condomonk Inc. is not liable for the use or misuse of the
-                      site's information.The information displayed on
-                      condomonk.ca is for reference only. Please contact a
-                      liscenced real estate agent or broker to seek advice or
-                      receive updated and accurate information.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            )}
           </div>
         </div>
       </div>
