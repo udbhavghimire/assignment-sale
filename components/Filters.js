@@ -14,7 +14,7 @@ import axios from "axios";
 const Filters = ({ city, setFilteredProjects }) => {
   const [price, setPrice] = useState([0, 4000000]);
   const [propertyType, setPropertyType] = useState("Any");
-  const [closingYear, setClosingYear] = useState(new Date().getFullYear());
+  const [closingYear, setClosingYear] = useState("2024");
   const [bedrooms, setBedrooms] = useState("Any");
   const [projects, setProjects] = useState([]);
 
@@ -26,6 +26,16 @@ const Filters = ({ city, setFilteredProjects }) => {
     "Detached",
   ];
   const bedroomOptions = ["Any", "1", "2", "3", "4", "5+"];
+  const occupancyOptions = [
+    "2024",
+    "2025",
+    "2026",
+    "2027",
+    "2028",
+    "2029",
+    "2030",
+    "2031",
+  ];
 
   useEffect(() => {
     const fetchFilteredData = async () => {
@@ -111,6 +121,7 @@ const Filters = ({ city, setFilteredProjects }) => {
           </Popover>
 
           {/* Closing Year Filter */}
+
           <Popover>
             <PopoverTrigger asChild>
               <Button
@@ -122,16 +133,20 @@ const Filters = ({ city, setFilteredProjects }) => {
               </Button>
             </PopoverTrigger>
             <PopoverContent>
-              <Slider
-                min={2020}
-                max={2030}
-                step={1}
-                value={[closingYear]}
-                onValueChange={(value) => setClosingYear(value[0])}
-                className="mt-6"
-              />
-              <div className="mt-4 text-center text-xs text-gray-500">
-                {closingYear}
+              <div className="grid gap-4">
+                {occupancyOptions.map((option) => (
+                  <Button
+                    key={option}
+                    variant={closingYear === option ? "default" : "ghost"}
+                    className="justify-start"
+                    onClick={() => setClosingYear(option)}
+                  >
+                    {closingYear === option && (
+                      <Check className="mr-2 h-4 w-4" />
+                    )}
+                    {option}
+                  </Button>
+                ))}
               </div>
             </PopoverContent>
           </Popover>
