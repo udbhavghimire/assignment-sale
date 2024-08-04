@@ -201,26 +201,12 @@ export default function Upload() {
                       value={predata.price_starting_from}
                       onChange={(e) => handleChange(e)}
                     />
-                    <label htmlFor="pricefrom">
-                      Price From <span className="text-danger">*</span>
+                    <label htmlFor="price">
+                      Price <span className="text-danger">*</span>
                     </label>
                   </div>
                 </div>
-                <div className="col-4">
-                  <div className="form-floating w-100">
-                    <input
-                      type="number"
-                      className="form-control"
-                      min="0"
-                      id="price_to"
-                      value={predata.price_to}
-                      onChange={(e) => handleChange(e)}
-                    />
-                    <label htmlFor="priceto">
-                      Price To <span className="text-danger">*</span>
-                    </label>
-                  </div>
-                </div>
+
                 <div className="col-4">
                   <div className="form-floating w-100">
                     <input
