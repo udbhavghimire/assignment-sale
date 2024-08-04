@@ -69,7 +69,7 @@ export default async function Home(props) {
           </div>
           <div className="d-flex flex-column justify-content-center flex-column align-items-center mb-lg-5 mb-2">
             <p className="fs-5 mb-0 text-center">
-              Explore 20+ Assignment for sale in Calgary
+              Explore 20+ Assignment for sale in Calgary.
             </p>
             <Link href={"/calgary"} className="mt-1 text-mine text-danger">
               More Assignments in Calgary{" "}
