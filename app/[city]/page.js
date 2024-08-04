@@ -33,8 +33,7 @@ export default function Home({ params }) {
           <div className="d-flex">
             <div>
               <h1 className="main-title font-family2 pb-2 pb-md-0">
-                Assignments for Sale in {CapitalizeFirst(params.city)}{" "}
-                <span className="nextline-sm"> ( 2024 )</span>
+                Assignments for Sale in {CapitalizeFirst(params.city)} ( 2024 )
               </h1>
             </div>
           </div>

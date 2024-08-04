@@ -19,9 +19,9 @@ const Footer = ({ cities }) => {
             <p className="textt">
               Be the First to Know! Subscribe to Our Newsletter and Receive
               Timely Updates on Exclusive Preconstruction assignments from
-              reputable builders across Canada –Assignhome.ca curates the latest
-              updates on any new construction townhomes, condos & detached home
-              assignments launching across canada.
+              reputable builders across Canada –Propertyassign .ca curates the
+              latest updates on any new construction townhomes, condos &
+              detached home assignments launching across canada.
             </p>
 
             <form action="">
@@ -71,20 +71,21 @@ const Footer = ({ cities }) => {
             <div className="row row-cols-md-3 row-cols-1 d-flex justify-content-around  align-items-center pt-5 ">
               <div className="col-md-6 texttt text-center">
                 <Link href="/" className="flogo font-family2">
-                  <span>AssignHome</span>
+                  <span>Propertyassign </span>
                 </Link>
                 <p></p>
                 <p className="pe-md-5 px-0 ">
-                  Note: Assignhome is Canada's one of the largest database of
+                  Note:Propertyassign is Canada's one of the largest database of
                   new assignments for sale. Our comprehensive database is
                   populated by our research and analysis of publicly available
-                  data. Assignhome strives for accuracy and we make every effort
-                  to verify the information. The information provided on
-                  Assignhome.ca may be outdated or inaccurate. Condomonk Inc. is
-                  not liable for the use or misuse of the site's information.The
-                  information displayed on Assignhome.ca is for reference only.
-                  Please contact a liscenced real estate agent or broker to seek
-                  advice or receive updated and accurate information.
+                  data.Propertyassign strives for accuracy and we make every
+                  effort to verify the information. The information provided on
+                  Propertyassign.ca may be outdated or inaccurate. Condomonk
+                  Inc. is not liable for the use or misuse of the site's
+                  information.The information displayed onPropertyassign.ca is
+                  for reference only. Please contact a liscenced real estate
+                  agent or broker to seek advice or receive updated and accurate
+                  information.
                 </p>
               </div>
 
@@ -97,7 +98,7 @@ const Footer = ({ cities }) => {
                   <strong>Phone:</strong> <span>647 527 4970</span>
                 </p>
                 <p>
-                  <strong>Email:</strong> <span>info@assignhome.ca</span>
+                  <strong>Email:</strong> <span>info@Propertyassign .ca</span>
                 </p>
               </div>
               <div className="col-md-3">
@@ -123,7 +124,7 @@ const Footer = ({ cities }) => {
         <div className="container copyright text-start text-center py-5">
           <p>
             ©2024 <span>Copyright</span>{" "}
-            <strong className="px-1">Assignhome</strong>{" "}
+            <strong className="px-1">Propertyassign </strong>{" "}
             <span>All Rights Reserved</span>
           </p>
         </div>

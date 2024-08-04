@@ -86,7 +86,7 @@ export default function CondoCard(props) {
                   src="https://img.icons8.com/ios/50/bed.png"
                   alt="bed"
                 />{" "}
-                <span className="ps-1">2</span>
+                <span className="ps-1">{props.beds}</span>
               </p>
               <p className="mb-1 cardd-subtitle cardd-subtitle-sm pe-3 d-flex align-items-center justify-content-center">
                 <img
@@ -95,7 +95,7 @@ export default function CondoCard(props) {
                   src="https://img.icons8.com/dotty/80/shower-and-tub.png"
                   alt="shower-and-tub"
                 />{" "}
-                <span className="ps-1">2</span>
+                <span className="ps-1">{props.baths}</span>
               </p>
               <p className="mb-1 cardd-subtitle cardd-subtitle-sm pe-3 d-flex align-items-center justify-content-center">
                 <img
@@ -104,7 +104,7 @@ export default function CondoCard(props) {
                   src="https://img.icons8.com/ios/50/ruler.png"
                   alt="ruler"
                 />
-                <span className="ps-1">2000 sqft</span>
+                <span className="ps-1">{props.area}</span>
               </p>
             </div>
             {/* <p className="mb-1 cardd-subtitle cardd-subtitle-sm">

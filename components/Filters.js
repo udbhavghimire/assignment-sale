@@ -12,7 +12,7 @@ import CondoCard from "@/components/CondoCard";
 import axios from "axios";
 
 const Filters = ({ city, setFilteredProjects }) => {
-  const [price, setPrice] = useState([0, 1000000]);
+  const [price, setPrice] = useState([0, 4000000]);
   const [propertyType, setPropertyType] = useState("Any");
   const [closingYear, setClosingYear] = useState(new Date().getFullYear());
   const [bedrooms, setBedrooms] = useState("Any");
@@ -52,13 +52,13 @@ const Filters = ({ city, setFilteredProjects }) => {
   return (
     <>
       <div className="pt-4">
-        <div className="flex flex-wrap gap-4">
+        <div className="flex flex-wrap gap-md-3 gap-2">
           {/* Bedrooms Filter */}
           <Popover>
             <PopoverTrigger asChild>
               <Button
                 variant="outline"
-                className="rounded-full px-3 py-1 text-xs border-2 border-black"
+                className="rounded-full px-2 py-1 text-xs border-2 border-black"
               >
                 Beds: {bedrooms}
                 <ChevronDown className="ml-2 h-4 w-4" />
@@ -85,7 +85,7 @@ const Filters = ({ city, setFilteredProjects }) => {
             <PopoverTrigger asChild>
               <Button
                 variant="outline"
-                className="rounded-full px-3 py-1 text-xs border-2 border-black"
+                className="rounded-full px-2 py-1 text-xs border-2 border-black"
               >
                 House Type: {propertyType}
                 <ChevronDown className="ml-2 h-4 w-4" />
@@ -115,7 +115,7 @@ const Filters = ({ city, setFilteredProjects }) => {
             <PopoverTrigger asChild>
               <Button
                 variant="outline"
-                className="rounded-full px-3 py-1 text-xs border-2 border-black"
+                className="rounded-full px-2 py-1 text-xs border-2 border-black"
               >
                 Closing Year: {closingYear}
                 <ChevronDown className="ml-2 h-4 w-4" />
@@ -137,8 +137,8 @@ const Filters = ({ city, setFilteredProjects }) => {
           </Popover>
 
           {/* Price Range */}
-          <div className="flex flex-col gap-2 w-80">
-            <div className="text-center text-xs flex justify-between">
+          <div className="flex flex-col gap-2 w-full md:w-80  mt-3 mt-md-0">
+            <div className="text-center text-xs flex justify-between ">
               Price Range
               <div>
                 <span className="text-xs text-gray-500 px-1">
@@ -150,10 +150,10 @@ const Filters = ({ city, setFilteredProjects }) => {
                 </span>
               </div>
             </div>
-            <div className="flex items-center gap-2 w-80">
+            <div className="flex items-center gap-2 w-full md:w-80">
               <Slider
                 min={0}
-                max={1000000}
+                max={4000000}
                 step={10000}
                 value={price}
                 onValueChange={setPrice}

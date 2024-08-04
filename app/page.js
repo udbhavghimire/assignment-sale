@@ -227,10 +227,10 @@ export default async function Home(props) {
                   ></BottomContactForm>
                   <div className="d-flex">
                     <p className="small-text2 mb-3 text-center">
-                      Assignhome.ca serves as an online database for assignment
-                      sale. Assignhome compiles a list of assignments available
-                      publicly on the internet and does not engage in real
-                      estate transactions. Please note that the information
+                      Propertyassign.ca serves as an online database for
+                      assignment sale. Assignhome compiles a list of assignments
+                      available publicly on the internet and does not engage in
+                      real estate transactions. Please note that the information
                       provided on this page may be outdated or inaccurate. By
                       submitting the above form, you consent to being contacted
                       by real estate agents advertising on this page. Your

@@ -265,6 +265,20 @@ export default function Upload() {
                 </div>
                 <div className="col-4">
                   <div className="form-floating w-100">
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="occupancy"
+                      value={predata.occupancy}
+                      onChange={(e) => handleChange(e)}
+                    />
+                    <label htmlFor="Occupancy">
+                      Occupancy <span className="text-danger">*</span>
+                    </label>
+                  </div>
+                </div>
+                <div className="col-4">
+                  <div className="form-floating w-100">
                     <select
                       className="form-select"
                       id="city"
