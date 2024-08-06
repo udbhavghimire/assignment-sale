@@ -9,6 +9,8 @@ import Gallery from "@/components/Gallery";
 import Link from "next/link";
 import CustomModal from "@/components/Modal";
 import Map from "@/components/Map";
+import Image from "next/image";
+import MortgageCalculator from "@/components/MortgageCalculator";
 
 // Define your functions outside of the component
 async function getData(slug) {
@@ -130,15 +132,15 @@ export default async function Home({ params }) {
             capitalizeLinks
           />
 
-          <Gallery
-            images={data.image}
-            project_name={data.project_name}
-            project_address={data.project_address}
-          ></Gallery>
-
           <div className="container  px-0 pt-3">
             <div className="row row-cols-1 row-cols-sm-1 row-cols-md-2 justify-content-center">
               <div className="col col-md-6 pe-md-5 pe-0">
+                <Gallery
+                  images={data.image}
+                  project_name={data.project_name}
+                  project_address={data.project_address}
+                ></Gallery>
+
                 <div className="screenshot ">
                   <div className="row row-cols-1 row-cols-sm-2">
                     <div className="col-sm-12">
@@ -323,6 +325,32 @@ export default async function Home({ params }) {
                     </div>
                   </div>
                 </div>
+
+                <div className="pb-3  my-5">
+                  <div className="roundddd">
+                    <h4 className="fw-bold">What is an Assignment for Sale?</h4>
+                    <p className="mb-1">
+                      An assignment is a sales transaction where the original
+                      buyer of a property (the “assignor”) allows another buyer
+                      (the “assignee”) to take over the buyer’s rights and
+                      obligations of the Agreement of Purchase and Sale, before
+                      the original buyer closes on the property (that is, where
+                      they take possession of the property). The assignee is the
+                      one who ultimately completes the deal with the seller.
+                    </p>
+                    <div className="d-flex justify-content-end mt-3">
+                      <div className="d-inline fs-5 fw-bold">
+                        <span>Propertyassign</span>
+                        <span className="text-danger">.</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <MortgageCalculator />
+                </div>
+
                 {/* <div className="py-3 my-5">
                   <h2 className="fw-bold fs-4 pb-3 font-family2">
                     Walk Score for {data.project_name}
@@ -432,14 +460,15 @@ export default async function Home({ params }) {
                         </p>
                       </div>
                     </div> */}
-                    <div className="row  align-items-start pt-3">
-                      {/* <div className="col-4">
-                        <img
-                          src="/contact-image.png"
-                          alt="contact image"
-                          className="agent-img"
-                        />
-                      </div> */}
+                    <div className="row  d-flex align-items-center justify-content-center ">
+                      <Image
+                        src="/contact-bottom-2.png"
+                        alt="Contact bottom"
+                        width={300}
+                        height={250}
+                        className="img-fluid w-50 w-smm-50 mb-2"
+                      />
+
                       <div className="text-center">
                         <h5 className="fw-bold text-center linem fs-1 text-danger mb-0 font-family2">
                           Assignment For Sale

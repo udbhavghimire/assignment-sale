@@ -18,12 +18,7 @@ export default function Gallery(props) {
     neImgs.forEach((image) => {
       image.image = "https://api.assignhome.ca" + image.image;
     });
-    for (let i = images.length; i < 7; i++) {
-      neImgs.push({
-        id: 0,
-        image: "https://condomonk.ca/noimage.webp",
-      });
-    }
+
     return neImgs;
   };
 
@@ -31,20 +26,20 @@ export default function Gallery(props) {
     <div className="my-3 grid-cont">
       <LightGallery onInit={onInit} speed={500} plugins={[lgThumbnail, lgZoom]}>
         {newImages(props.images)
-          ?.slice(0, 7)
+          ?.slice(0, 3)
           .map((image, no) => (
             <Link
               href={`${image.image}`}
-              className={`position-relative g-item grid-item${parseInt(
-                no + 1
-              )}`} /* Adjusted class assignment */
+              className={
+                "position-relative g-item grid-item" + parseInt(no + 1)
+              }
               key={no}
             >
               <img
                 alt={`${props.project_name} located at ${
                   props.project_address
                 } image ${no + 1}`}
-                className="img-fluid w-100 h-100 rounded-mine2 lazy"
+                className="img-fluid w-100 h-100 rounded-mine"
                 src={`${image.image}`}
               />
             </Link>
