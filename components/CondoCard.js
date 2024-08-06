@@ -110,7 +110,7 @@ export default function CondoCard(props) {
             {/* <p className="mb-1 cardd-subtitle cardd-subtitle-sm">
               By {props.developer.name}
             </p> */}
-            <p className="mb-1 cardd-subtitle ">{props.project_address}</p>
+            <p className="mb-1 cardd-subtitle ">{props.project_name}</p>
             <p className="mb-1 cardd-subtitle text-secondary">
               Approx completion: {props.occupancy}
             </p>
