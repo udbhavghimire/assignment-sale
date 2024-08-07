@@ -21,7 +21,7 @@ const Filters = ({ city, setFilteredProjects }) => {
   const propertyTypes = [
     "Any",
     "Condo",
-    "Townhouse",
+    "Townhome",
     "Semi-Detached",
     "Detached",
   ];
