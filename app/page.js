@@ -46,6 +46,8 @@ async function getFeaturedData() {
 }
 export default async function Home(props) {
   const data = await getData("calgary");
+  const milton_data = await getData("milton");
+  const burlington_data = await getData("burlington");
   let cities = await getCities();
   // let dropdown_cities = await getCitiesandProjects();
   // const featured = await getFeaturedData();
@@ -69,7 +71,7 @@ export default async function Home(props) {
           </div>
           <div className="d-flex flex-column justify-content-center flex-column align-items-center mb-lg-5 mb-2">
             <p className="fs-5 mb-0 text-center">
-              Explore 20+ Assignment for sale in Calgary.
+              Explore 20+ Assignment sale in Calgary.
             </p>
             <Link href={"/calgary"} className="mt-1 text-mine text-danger">
               More Assignments in Calgary{" "}
@@ -91,6 +93,40 @@ export default async function Home(props) {
                 </div>
               ))}
           </div>
+
+          <div className="pt-5">
+            <div className="d-flex align-items-center justify-content-center text-center pt-5">
+              <h2 className="fw-mine ccent-line fs-big pt-5">
+                <Link href={"/milton"} className="link-black font-family2">
+                  Assignment For Sale in Milton
+                </Link>
+              </h2>
+            </div>
+            <div className="d-flex flex-column justify-content-center flex-column align-items-center mb-lg-5 mb-2">
+              <p className="fs-5 mb-0 text-center">
+                Explore 20+ Assignment for sale in Milton.
+              </p>
+              <Link href={"/milton"} className="mt-1 text-mine text-danger">
+                More Assignments in Milton{" "}
+                <i className="bi bi-arrow-right-short"></i>
+              </Link>
+            </div>
+            <div className="row row-cols-2 row-cols-md-4  gy-4 gx-3 gx-lg-3 ">
+              {milton_data.preconstructions &&
+                milton_data.preconstructions.map((item, no) => (
+                  <div className="col" key={item.id}>
+                    <script
+                      key={item.slug}
+                      type="application/ld+json"
+                      dangerouslySetInnerHTML={{
+                        __html: JSON.stringify(PreconSchema(item)),
+                      }}
+                    />
+                    <CondoCard {...item} no={no} />
+                  </div>
+                ))}
+            </div>
+          </div>
           <div className="py-5 my-2"></div>
           <h2 className="fw-mine text-center mb-5 accent-line fs-1 font-family2">
             Explore New Assignment Sales In Ontario & Alberta
@@ -109,7 +145,7 @@ export default async function Home(props) {
                   <div className="overlay">
                     <div className="details">
                       <h4>Toronto</h4>
-                      <p>Explore Assignments for sale in Toronto</p>
+                      <p>Explore Assignments sale in Toronto</p>
                     </div>
                   </div>
                 </Link>
@@ -126,7 +162,7 @@ export default async function Home(props) {
                   <div className="overlay">
                     <div className="details">
                       <h4>Brampton</h4>
-                      <p>Explore Assignments for sale in Brampton</p>
+                      <p>Explore Assignment sale in Brampton</p>
                     </div>
                   </div>
                 </Link>
@@ -143,7 +179,7 @@ export default async function Home(props) {
                   <div className="overlay">
                     <div className="details">
                       <h4>Etobicoke</h4>
-                      <p>Explore Assignments for sale in Etobicoke</p>
+                      <p>Explore Assignment sale in Etobicoke</p>
                     </div>
                   </div>
                 </Link>
@@ -160,7 +196,7 @@ export default async function Home(props) {
                   <div className="overlay">
                     <div className="details">
                       <h4>Calgary</h4>
-                      <p>Explore Assignments for sale in Calgary</p>
+                      <p>Explore Assignment sale in Calgary</p>
                     </div>
                   </div>
                 </Link>
@@ -177,14 +213,46 @@ export default async function Home(props) {
                   <div className="overlay">
                     <div className="details">
                       <h4>Mississauga</h4>
-                      <p>Explore Assignments for sale in Mississauga</p>
+                      <p>Explore Assignment sale in Mississauga</p>
                     </div>
                   </div>
                 </Link>
               </div>
             </div>
           </div>
-
+          <div className="pt-5">
+            <div className="d-flex align-items-center justify-content-center text-center pt-5">
+              <h2 className="fw-mine ccent-line fs-big pt-5">
+                <Link href={"/burlington"} className="link-black font-family2">
+                  Assignment For Sale in Burlington
+                </Link>
+              </h2>
+            </div>
+            <div className="d-flex flex-column justify-content-center flex-column align-items-center mb-lg-5 mb-2">
+              <p className="fs-5 mb-0 text-center">
+                Explore 20+ Assignment sale in Burlington.
+              </p>
+              <Link href={"/burlington"} className="mt-1 text-mine text-danger">
+                More Assignments in Burlington{" "}
+                <i className="bi bi-arrow-right-short"></i>
+              </Link>
+            </div>
+            <div className="row row-cols-2 row-cols-md-4  gy-4 gx-3 gx-lg-3 ">
+              {burlington_data.preconstructions &&
+                burlington_data.preconstructions.map((item, no) => (
+                  <div className="col" key={item.id}>
+                    <script
+                      key={item.slug}
+                      type="application/ld+json"
+                      dangerouslySetInnerHTML={{
+                        __html: JSON.stringify(PreconSchema(item)),
+                      }}
+                    />
+                    <CondoCard {...item} no={no} />
+                  </div>
+                ))}
+            </div>
+          </div>
           <div className="py-5 my-2"></div>
 
           {/* <div className="py-5 mt-md-5 mt-0">

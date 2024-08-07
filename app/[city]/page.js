@@ -38,8 +38,8 @@ export default function Home({ params }) {
             </div>
           </div>
           <p className="font-normal sm-center pb-2 pb-md-0 mb-0 fw-medium text-lg">
-            Discover new condo, townhouse, or detached home assignments for sale
-            in {CapitalizeFirst(params.city)}.
+            Discover new condo, townhouse, or detached home assignment sale in{" "}
+            {CapitalizeFirst(params.city)}.
           </p>
           <Filters
             city={params.city}

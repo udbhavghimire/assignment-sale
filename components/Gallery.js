@@ -39,7 +39,7 @@ export default function Gallery(props) {
                 alt={`${props.project_name} located at ${
                   props.project_address
                 } image ${no + 1}`}
-                className="img-fluid w-100 h-100 rounded-mine"
+                className="img-fluid h-100 rounded-mine"
                 src={`${image.image}`}
               />
             </Link>

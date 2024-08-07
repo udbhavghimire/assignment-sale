@@ -183,8 +183,8 @@ a:hover {
     }
 
     .muuuu {
-        padding-left: 10px;
-        width: 290px !important;
+        padding-left: 0px;
+        width: 280px !important;
     }
 }
 
@@ -606,6 +606,7 @@ a:hover {
     }
 
     .muuuu {
+        padding-left: 0px;
         width: 180px;
     }
 
@@ -668,22 +669,22 @@ a:hover {
     }
 
     .grid-item1 {
-        grid-area: 1 / 1/ 2/ 5 !important;
-        height: 420px;
+
+        height: 350px !important;
     }
 
     .grid-item2,
     .grid-item3,
     .grid-item4,
     .grid-item5 {
-        max-height: 100px !important;
+        max-height: 120px !important;
     }
 
     .grid-cont>div:first-child {
         display: grid;
         gap: 10px 10px;
         z-index: 98 !important;
-        grid-template-columns: repeat(4, 1fr) !important;
+        grid-template-columns: repeat(2, 1fr) !important;
         grid-template-rows: auto auto !important;
     }
 
@@ -1179,8 +1180,8 @@ a:hover {
 }
 
 .sidebar {
-    position: fixed;
-    top: 60px;
+    position: absolute;
+    top: 150px;
     left: 0;
     bottom: 0;
     width: 300px;
@@ -1190,8 +1191,8 @@ a:hover {
     overflow-y: auto;
     scrollbar-width: thin;
     scrollbar-color: #aab7cf transparent;
-    box-shadow: 0 0 20px rgba(1, 41, 112, 0.1);
-    background-color: #fff;
+    /* box-shadow: 0 0 20px rgba(1, 41, 112, 0.1);
+    background-color: #fff; */
 }
 
 @media (max-width: 1199px) {
@@ -1257,9 +1258,9 @@ a:hover {
     align-items: center;
     font-size: 15px;
     font-weight: 600;
-    color: #000;
+    color: #4154f1 !important;
     transition: .3;
-    background: #fff;
+    background: #f6f9ff;
     padding: 10px 15px;
     border-radius: 4px;
 }
@@ -1269,9 +1270,9 @@ a:hover {
     align-items: center;
     font-size: 15px;
     font-weight: 600;
-    color: #4154f1;
+    color: #4154f1 !important;
     transition: .3;
-    background: #f6f9ff;
+    background: #f6f9ff !;
     padding: 10px 15px;
     border-radius: 4px;
 }

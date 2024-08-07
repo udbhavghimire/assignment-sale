@@ -178,7 +178,7 @@ const Filters = ({ city, setFilteredProjects }) => {
           </div>
         </div>
       </div>
-      <div className="row row-cols-1 row-cols-md-4 gy-4 gx-3 gx-lg-3 pt-10">
+      <div className="row row-cols-2 row-cols-md-4 gy-4 gx-3 gx-lg-3 pt-10">
         {projects &&
           projects.map((item, no) => (
             <div className="col" key={item.id}>

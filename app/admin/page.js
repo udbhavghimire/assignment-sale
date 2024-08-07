@@ -104,8 +104,8 @@ export default function Home() {
 
   return (
     <>
-      <div className="py-4 w-100 ">
-        <div className="row row-cols-1 row-cols-md-5 d-flex align-items-center mx-0">
+      <div className="py-md-4 py-2 w-100 ">
+        <div className="row row-cols-2 row-cols-md-5 d-flex align-items-center mx-0 g-3">
           <div className="col-md-3">
             <div className="form-floating">
               <select
@@ -177,7 +177,7 @@ export default function Home() {
           <i className="bi bi-arrow-left me-2"></i>
           Previous Page
         </button>
-        <span className="fw-bold">
+        <span className="fw-bold d-none d-md-block">
           Page {page} of {totalPages}
         </span>
         <button
