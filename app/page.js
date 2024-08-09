@@ -45,7 +45,7 @@ async function getFeaturedData() {
   return res.json();
 }
 export default async function Home(props) {
-  const data = await getData("calgary");
+  const data = await getData("brampton");
   const milton_data = await getData("milton");
   const burlington_data = await getData("burlington");
   let cities = await getCities();
@@ -64,23 +64,23 @@ export default async function Home(props) {
         <div className="container pt-5 " id="projects">
           <div className="d-flex align-items-center justify-content-center text-center">
             <h2 className="fw-mine ccent-line fs-big ">
-              <Link href={"/calgary"} className="link-black font-family2">
-                Assignment For Sale in Calgary
+              <Link href={"/brampton"} className="link-black font-family2">
+                Assignment For Sale in Brampton
               </Link>
             </h2>
           </div>
           <div className="d-flex flex-column justify-content-center flex-column align-items-center mb-lg-5 mb-2">
             <p className="fs-5 mb-0 text-center">
-              Explore 20+ Assignment sale in Calgary.
+              Explore 20+ Assignment sale in Brampton.
             </p>
-            <Link href={"/calgary"} className="mt-1 text-mine text-danger">
-              More Assignments in Calgary{" "}
+            <Link href={"/brampton"} className="mt-1 text-mine text-danger">
+              More Assignments in Brampton{" "}
               <i className="bi bi-arrow-right-short"></i>
             </Link>
           </div>
-          <div className="row row-cols-2 row-cols-md-4  gy-4 gx-3 gx-lg-3 ">
+          <div className="row row-cols-2 row-cols-md-4  gy-md-4 gy-0 gx-3 gx-lg-3 ">
             {data.preconstructions &&
-              data.preconstructions.map((item, no) => (
+              data.preconstructions.slice(0, 8).map((item, no) => (
                 <div className="col" key={item.id}>
                   <script
                     key={item.slug}
@@ -111,9 +111,9 @@ export default async function Home(props) {
                 <i className="bi bi-arrow-right-short"></i>
               </Link>
             </div>
-            <div className="row row-cols-2 row-cols-md-4  gy-4 gx-3 gx-lg-3 ">
+            <div className="row row-cols-2 row-cols-md-4  gy-md-4 gy-0 gx-3 gx-lg-3 ">
               {milton_data.preconstructions &&
-                milton_data.preconstructions.map((item, no) => (
+                milton_data.preconstructions.slice(0, 8).map((item, no) => (
                   <div className="col" key={item.id}>
                     <script
                       key={item.slug}
@@ -237,9 +237,9 @@ export default async function Home(props) {
                 <i className="bi bi-arrow-right-short"></i>
               </Link>
             </div>
-            <div className="row row-cols-2 row-cols-md-4  gy-4 gx-3 gx-lg-3 ">
+            <div className="row row-cols-2 row-cols-md-4  gy-md-4 gy-0 gx-3 gx-lg-3 ">
               {burlington_data.preconstructions &&
-                burlington_data.preconstructions.map((item, no) => (
+                burlington_data.preconstructions.slice(0, 8).map((item, no) => (
                   <div className="col" key={item.id}>
                     <script
                       key={item.slug}

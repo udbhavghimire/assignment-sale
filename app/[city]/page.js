@@ -12,7 +12,7 @@ export async function generateMetadata({ params }, parent) {
   return {
     ...parent,
     alternates: {
-      canonical: `https://condomonk.ca/${params.city}`,
+      canonical: `https://propertyassign.ca/${params.city}`,
     },
     title: `Top New condos, townhomes and detached home assignment sales in ${city}`,
     description: `Discover stunning new condos, townhouse and detached homes assignment sales in ${city}. Find your dream property in our latest developments. Tour new builds today!`,

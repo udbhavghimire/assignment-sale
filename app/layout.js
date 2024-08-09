@@ -15,11 +15,11 @@ const montserrat = Montserrat({ subsets: ["cyrillic"] });
 
 export const metadata = {
   alternates: {
-    canonical: `https://condomonk.ca/`,
+    canonical: `https://propertyassign.ca/`,
   },
-  title: "New Assignmnet sales in Canada",
+  title: "New Assignment sales in Canada",
   description:
-    "Find the latest assignment for sale in Canada with the Canada's most user-friendly pre construction portal. Search new homes to buy from leading estate marketplace in Canada.",
+    "Find the latest assignment sale in Canada with the Canada's most user-friendly pre construction portal. Search new homes to buy from leading estate marketplace in Canada.",
   icons: {
     icon: "/icon.png",
     shortcut: "/shortcut-icon.png",
