@@ -54,20 +54,8 @@ async function getCities() {
   return res.json();
 }
 
-async function getCitiesandProjects() {
-  const res = await fetch("https://api.assignhome.ca/api/all-precons", {
-    next: { revalidate: 10 },
-  });
-
-  if (!res.ok) {
-    throw new Error("Failed to fetch data");
-  }
-  return res.json();
-}
-
 export default async function RootLayout({ children }) {
   let cities = await getCities();
-  let dropdown_cities = await getCitiesandProjects();
   return (
     <html lang="en">
       <body className={montserrat.className}>
@@ -83,7 +71,7 @@ export default async function RootLayout({ children }) {
           shadow="0 0 10px #00A1FF,0 0 5px #00A1FF"
         />
 
-        <Navbar cities={cities} dropdown_cities={dropdown_cities}></Navbar>
+        <Navbar cities={cities}></Navbar>
         <Providers>
           <GoogleAnalytics />
           {children}
