@@ -235,7 +235,7 @@ export default function Update({ params }) {
           <div className="row row-cols-2 bg-light py-5 px-3 rounded-mine">
             <div className="col-12">
               <div className="row row-cols-2 gy-4">
-                <div className="col-4">
+                <div className="col-md-4 col-6">
                   <div className="form-floating w-100">
                     <input
                       type="text"
@@ -249,7 +249,7 @@ export default function Update({ params }) {
                     </label>
                   </div>
                 </div>
-                <div className="col-4">
+                <div className="col-md-4 col-6">
                   <div className="form-floating w-100">
                     <select
                       className="form-select"
@@ -270,7 +270,7 @@ export default function Update({ params }) {
                   </div>
                 </div>
 
-                <div className="col-4">
+                <div className="col-md-4 col-6">
                   <div className="form-floating w-100">
                     <input
                       type="number"
@@ -286,7 +286,7 @@ export default function Update({ params }) {
                   </div>
                 </div>
 
-                <div className="col-4">
+                <div className="col-md-4 col-6">
                   <div className="form-floating w-100">
                     <input
                       type="text"
@@ -300,7 +300,7 @@ export default function Update({ params }) {
                     </label>
                   </div>
                 </div>
-                <div className="col-4">
+                <div className="col-md-4 col-6">
                   <div className="form-floating w-100">
                     <input
                       type="text"
@@ -314,7 +314,7 @@ export default function Update({ params }) {
                     </label>
                   </div>
                 </div>
-                <div className="col-4">
+                <div className="col-md-4 col-6">
                   <div className="form-floating w-100">
                     <input
                       type="text"
@@ -328,7 +328,7 @@ export default function Update({ params }) {
                     </label>
                   </div>
                 </div>
-                <div className="col-4">
+                <div className="col-md-4 col-6">
                   <div className="form-floating w-100">
                     <input
                       type="text"
@@ -342,7 +342,7 @@ export default function Update({ params }) {
                     </label>
                   </div>
                 </div>
-                <div className="col-4">
+                <div className="col-md-4 col-6">
                   <div className="form-floating w-100">
                     <select
                       className="form-select"
@@ -376,10 +376,7 @@ export default function Update({ params }) {
         </div>
         <div className="container-fluid px-minn pb-5 mydetaill">
           <p className="fs-5 fw-bold">Enter Description about the Project</p>
-          <p className="my-3">
-            The most anticipated preconstruction project in CITY NAME ... [
-            Summary, Descriptions, Deposite Structure, Amenities ]
-          </p>
+
           <ReactQuill
             theme="snow"
             value={predata.description}
@@ -423,7 +420,7 @@ export default function Update({ params }) {
               }))
             }
           />
-          <div className="row row-cols-2 pt-4 pb-3">
+          <div className="row row-cols-md-2 row-cols-1 pt-4 pb-3">
             <div className="col-6 pb-3">
               <h5 className="fw-bold">Uploaded Images</h5>
               <div className="row row-cols-3">
