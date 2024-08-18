@@ -64,7 +64,10 @@ export default async function Home(props) {
         <div className="container pt-5 " id="projects">
           <div className="d-flex align-items-center justify-content-center text-center">
             <h2 className="fw-mine ccent-line fs-big ">
-              <Link href={"/brampton"} className="link-black font-family2">
+              <Link
+                href={"assignment-for-sale/brampton"}
+                className="link-black font-family2"
+              >
                 Assignment For Sale in Brampton
               </Link>
             </h2>
@@ -73,7 +76,10 @@ export default async function Home(props) {
             <p className="fs-5 mb-0 text-center">
               Explore 20+ Assignment sale in Brampton.
             </p>
-            <Link href={"/brampton"} className="mt-1 text-mine text-danger">
+            <Link
+              href={"assignment-for-sale/brampton"}
+              className="mt-1 text-mine text-danger"
+            >
               More Assignments in Brampton{" "}
               <i className="bi bi-arrow-right-short"></i>
             </Link>
@@ -97,7 +103,10 @@ export default async function Home(props) {
           <div className="pt-5">
             <div className="d-flex align-items-center justify-content-center text-center pt-5">
               <h2 className="fw-mine ccent-line fs-big pt-5">
-                <Link href={"/milton"} className="link-black font-family2">
+                <Link
+                  href={"assignment-for-sale/milton"}
+                  className="link-black font-family2"
+                >
                   Assignment For Sale in Milton
                 </Link>
               </h2>
@@ -106,7 +115,10 @@ export default async function Home(props) {
               <p className="fs-5 mb-0 text-center">
                 Explore 20+ Assignment for sale in Milton.
               </p>
-              <Link href={"/milton"} className="mt-1 text-mine text-danger">
+              <Link
+                href={"assignment-for-sale/milton"}
+                className="mt-1 text-mine text-danger"
+              >
                 More Assignments in Milton{" "}
                 <i className="bi bi-arrow-right-short"></i>
               </Link>
@@ -134,7 +146,10 @@ export default async function Home(props) {
           <div className="container">
             <div className="row row-cols-md-5 row-cols-2">
               <div className="col">
-                <Link className="d-block properti_city" href={"/toronto"}>
+                <Link
+                  className="d-block properti_city"
+                  href={"/assignment-for-saletoronto"}
+                >
                   <div className="thumb">
                     <img
                       src="/cities/toronto.jpg"
@@ -151,7 +166,10 @@ export default async function Home(props) {
                 </Link>
               </div>
               <div className="col">
-                <Link className="d-block properti_city" href={"/brampton"}>
+                <Link
+                  className="d-block properti_city"
+                  href={"assignment-for-sale/brampton"}
+                >
                   <div className="thumb">
                     <img
                       src="/cities/brampton.jpg"
@@ -168,7 +186,10 @@ export default async function Home(props) {
                 </Link>
               </div>
               <div className="col">
-                <Link className="d-block properti_city" href={"/etobicoke"}>
+                <Link
+                  className="d-block properti_city"
+                  href={"assignment-for-sale/etobicoke"}
+                >
                   <div className="thumb">
                     <img
                       src="/cities/etobicoke.jpg"
@@ -185,7 +206,10 @@ export default async function Home(props) {
                 </Link>
               </div>
               <div className="col">
-                <Link className="d-block properti_city" href={"/calgary"}>
+                <Link
+                  className="d-block properti_city"
+                  href={"assignment-for-sale/calgary"}
+                >
                   <div className="thumb">
                     <img
                       src="/cities/calgary.jpeg"
@@ -202,7 +226,10 @@ export default async function Home(props) {
                 </Link>
               </div>
               <div className="col">
-                <Link className="d-block properti_city" href={"/mississauga"}>
+                <Link
+                  className="d-block properti_city"
+                  href={"assignment-for-sale/mississauga"}
+                >
                   <div className="thumb">
                     <img
                       src="/cities/mississauga.jpg"
@@ -223,7 +250,10 @@ export default async function Home(props) {
           <div className="pt-5">
             <div className="d-flex align-items-center justify-content-center text-center pt-5">
               <h2 className="fw-mine ccent-line fs-big pt-5">
-                <Link href={"/burlington"} className="link-black font-family2">
+                <Link
+                  href={"assignment-for-sale/burlington"}
+                  className="link-black font-family2"
+                >
                   Assignment For Sale in Burlington
                 </Link>
               </h2>
@@ -232,7 +262,10 @@ export default async function Home(props) {
               <p className="fs-5 mb-0 text-center">
                 Explore 20+ Assignment sale in Burlington.
               </p>
-              <Link href={"/burlington"} className="mt-1 text-mine text-danger">
+              <Link
+                href={"assignment-for-sale/burlington"}
+                className="mt-1 text-mine text-danger"
+              >
                 More Assignments in Burlington{" "}
                 <i className="bi bi-arrow-right-short"></i>
               </Link>

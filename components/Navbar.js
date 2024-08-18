@@ -94,7 +94,7 @@ const Navbar = ({ cities, transparent }) => {
                           <div className="col" key={city.id}>
                             <Link
                               className="dropdown-item"
-                              href={`/${city.slug}`}
+                              href={`/assignment-for-sale/${city.slug}`}
                             >
                               {city.name}
                             </Link>

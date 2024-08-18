@@ -21,7 +21,7 @@ function SearchSuggest(props) {
 
   const handleOnSelect = (item) => {
     console.log(item);
-    route.push(`/${item.slug}/`);
+    route.push(`/assignment-for-sale/${item.slug}/`);
   };
 
   const handleOnFocus = () => {
