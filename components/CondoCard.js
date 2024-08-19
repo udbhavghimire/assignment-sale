@@ -30,7 +30,7 @@ export default function CondoCard(props) {
       <div className="card border-0 shadow-lg rounded-mine my-3 my-md-0 condocard bigg">
         <div className="position-relative is-loading">
           <Link
-            href={`/${props.city.slug}/${props.slug}`}
+            href={`/assignment-for-sale/${props.city.slug}/${props.slug}`}
             className="mylinkk"
             target="_blank"
           >
