@@ -14,7 +14,7 @@ import axios from "axios";
 const Filters = ({ city, setFilteredProjects }) => {
   const [price, setPrice] = useState([0, 4000000]);
   const [propertyType, setPropertyType] = useState("Any");
-  const [closingYear, setClosingYear] = useState("2024");
+  const [closingYear, setClosingYear] = useState("2023");
   const [bedrooms, setBedrooms] = useState("Any");
   const [projects, setProjects] = useState([]);
 
@@ -27,6 +27,7 @@ const Filters = ({ city, setFilteredProjects }) => {
   ];
   const bedroomOptions = ["Any", "1", "2", "3", "4", "5+"];
   const occupancyOptions = [
+    "2023",
     "2024",
     "2025",
     "2026",
