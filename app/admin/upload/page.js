@@ -16,6 +16,7 @@ export default function Upload() {
     price_to: 0.0,
     project_type: "Condo",
     description: "",
+    occupancy: "",
     beds: 0,
     baths: 0,
     area: 0,
@@ -252,7 +253,7 @@ export default function Upload() {
                 <div className="col-md-4 col-6">
                   <div className="form-floating w-100">
                     <input
-                      type="text"
+                      type="number"
                       className="form-control"
                       id="occupancy"
                       value={predata.occupancy}

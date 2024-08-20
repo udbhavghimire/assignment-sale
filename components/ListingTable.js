@@ -18,7 +18,6 @@ const ListingTable = ({ preconstructions, handleDelete, filters }) => {
             <th scope="col">S.N</th>
             <th scope="col">Project Name</th>
             <th scope="col">City</th>
-            <th scope="col">Project Status</th>
             <th scope="col">Project Type</th>
             <th scope="col">Action</th>
           </tr>
@@ -29,7 +28,6 @@ const ListingTable = ({ preconstructions, handleDelete, filters }) => {
               <th scope="row">{index + 1}</th>
               <td>{preconstruction.project_name}</td>
               <td>{preconstruction.city.name}</td>
-              <td>{preconstruction.status}</td>
               <td>{preconstruction.project_type}</td>
               <td>
                 <Link

@@ -17,6 +17,7 @@ export default function Update({ params }) {
     project_type: "Condo",
     description: "",
     beds: 0,
+    occupancy: "",
     baths: 0,
     area: 0,
     city: {
@@ -111,7 +112,8 @@ export default function Update({ params }) {
       predata.city.name === "" ||
       predata.beds === "" ||
       predata.baths === "" ||
-      predata.area === ""
+      predata.area === "" ||
+      predata.occupancy === ""
     ) {
       swal("Please fill all the fields", "", "error");
       return;
@@ -331,7 +333,7 @@ export default function Update({ params }) {
                 <div className="col-md-4 col-6">
                   <div className="form-floating w-100">
                     <input
-                      type="text"
+                      type="number"
                       className="form-control"
                       id="occupancy"
                       value={predata.occupancy}
