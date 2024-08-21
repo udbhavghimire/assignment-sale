@@ -70,7 +70,7 @@ export default function CondoCard(props) {
         </div>
 
         <Link
-          href={`/${props.city.slug}/${props.slug}`}
+          href={`/assignment-for-sale/${props.city.slug}/${props.slug}`}
           className="px-3 pb-2 text-decoration-none text-dark bg-white shadow-lgg rounded-mine"
           target="_blank"
         >
