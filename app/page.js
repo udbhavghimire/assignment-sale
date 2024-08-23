@@ -12,7 +12,7 @@ async function getData(city) {
   const res = await fetch(
     "https://api.assignhome.ca/api/preconstructions-city/" +
       city +
-      "?page_size=10",
+      "?page_size=10&closing_year=2023",
     {
       next: { revalidate: 10 },
     }
