@@ -783,8 +783,8 @@ a:hover {
         position: fixed;
         z-index: 9999;
         display: block !important;
-        background-color: #ffc619 !important;
-        color: #000 !important;
+        background-color: #e11405 !important;
+        color: #ffffff !important;
     }
 
     .overlay-container {
