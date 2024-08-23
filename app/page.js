@@ -6,6 +6,7 @@ import BottomContactForm from "@/components/BottomContactForm";
 import MainSearch from "@/components/MainSearch";
 import "./icons.css";
 import FeaturedCard from "@/components/FeaturedCard";
+import Carousel from "@/components/Carousel";
 
 async function getData(city) {
   const res = await fetch(
@@ -44,11 +45,12 @@ async function getFeaturedData() {
   }
   return res.json();
 }
+
 export default async function Home(props) {
-  const data = await getData("brampton");
-  const milton_data = await getData("milton");
+  const data = await getData("mississauga");
+  const milton_data = await getData("ajax");
   const burlington_data = await getData("burlington");
-  let cities = await getCities();
+
   // let dropdown_cities = await getCitiesandProjects();
   // const featured = await getFeaturedData();
 
@@ -60,33 +62,38 @@ export default async function Home(props) {
 
   return (
     <>
-      <div className="pt-5 ">
-        <div className="container pt-5 " id="projects">
-          <div className="d-flex align-items-center justify-content-center text-center">
+      <div className="py-md-5 pt-3 pb-5  my-md-5 mt-2 mb-5 bg-red-50">
+        <div className="py-md-5 pt-2 pb-5 mb-5 container">
+          <Carousel />
+        </div>
+      </div>
+      <div className="pt-5">
+        <div className="container pt-5" id="projects">
+          <div className="d-flex align-items-center justify-content-center text-center pt-5 pt-md-0">
             <h2 className="fw-mine ccent-line fs-big ">
               <Link
-                href={"assignment-for-sale/brampton"}
+                href={"assignment-for-sale/mississauga"}
                 className="link-black font-family2"
               >
-                Assignment For Sale in Brampton
+                Assignment For Sale in Mississauga
               </Link>
             </h2>
           </div>
           <div className="d-flex flex-column justify-content-center flex-column align-items-center mb-lg-5 mb-2">
             <p className="fs-5 mb-0 text-center">
-              Explore 20+ Assignment sale in Brampton.
+              Explore 20+ Assignment sale in Mississauga.
             </p>
             <Link
-              href={"assignment-for-sale/brampton"}
+              href={"assignment-for-sale/mississauga"}
               className="mt-1 text-mine text-danger"
             >
-              More Assignments in Brampton{" "}
+              More Assignments in Mississauga{" "}
               <i className="bi bi-arrow-right-short"></i>
             </Link>
           </div>
-          <div className="row row-cols-2 row-cols-md-4  gy-md-4 gy-0 gx-3 gx-lg-3 ">
+          <div className="row row-cols-2 row-cols-md-4 gy-md-5 gx-3">
             {data.preconstructions &&
-              data.preconstructions.slice(0, 8).map((item, no) => (
+              data.preconstructions.slice(0, 8).map((item) => (
                 <div className="col" key={item.id}>
                   <script
                     key={item.slug}
@@ -95,7 +102,7 @@ export default async function Home(props) {
                       __html: JSON.stringify(PreconSchema(item)),
                     }}
                   />
-                  <CondoCard {...item} no={no} />
+                  <CondoCard {...item} />
                 </div>
               ))}
           </div>
@@ -125,7 +132,7 @@ export default async function Home(props) {
             </div>
             <div className="row row-cols-2 row-cols-md-4  gy-md-4 gy-0 gx-3 gx-lg-3 ">
               {milton_data.preconstructions &&
-                milton_data.preconstructions.slice(0, 8).map((item, no) => (
+                milton_data.preconstructions.slice(0, 8).map((item) => (
                   <div className="col" key={item.id}>
                     <script
                       key={item.slug}
@@ -134,7 +141,47 @@ export default async function Home(props) {
                         __html: JSON.stringify(PreconSchema(item)),
                       }}
                     />
-                    <CondoCard {...item} no={no} />
+                    <CondoCard {...item} />
+                  </div>
+                ))}
+            </div>
+          </div>
+
+          <div className="pt-5">
+            <div className="d-flex align-items-center justify-content-center text-center pt-5">
+              <h2 className="fw-mine ccent-line fs-big pt-5">
+                <Link
+                  href={"assignment-for-sale/burlington"}
+                  className="link-black font-family2"
+                >
+                  Assignment For Sale in Burlington
+                </Link>
+              </h2>
+            </div>
+            <div className="d-flex flex-column justify-content-center flex-column align-items-center mb-lg-5 mb-2">
+              <p className="fs-5 mb-0 text-center">
+                Explore 20+ Assignment sale in Burlington.
+              </p>
+              <Link
+                href={"assignment-for-sale/burlington"}
+                className="mt-1 text-mine text-danger"
+              >
+                More Assignments in Burlington{" "}
+                <i className="bi bi-arrow-right-short"></i>
+              </Link>
+            </div>
+            <div className="row row-cols-2 row-cols-md-4  gy-md-4 gy-0 gx-3 gx-lg-3 ">
+              {burlington_data.preconstructions &&
+                burlington_data.preconstructions.slice(0, 8).map((item) => (
+                  <div className="col" key={item.id}>
+                    <script
+                      key={item.slug}
+                      type="application/ld+json"
+                      dangerouslySetInnerHTML={{
+                        __html: JSON.stringify(PreconSchema(item)),
+                      }}
+                    />
+                    <CondoCard {...item} />
                   </div>
                 ))}
             </div>
@@ -247,46 +294,6 @@ export default async function Home(props) {
               </div>
             </div>
           </div>
-          <div className="pt-5">
-            <div className="d-flex align-items-center justify-content-center text-center pt-5">
-              <h2 className="fw-mine ccent-line fs-big pt-5">
-                <Link
-                  href={"assignment-for-sale/burlington"}
-                  className="link-black font-family2"
-                >
-                  Assignment For Sale in Burlington
-                </Link>
-              </h2>
-            </div>
-            <div className="d-flex flex-column justify-content-center flex-column align-items-center mb-lg-5 mb-2">
-              <p className="fs-5 mb-0 text-center">
-                Explore 20+ Assignment sale in Burlington.
-              </p>
-              <Link
-                href={"assignment-for-sale/burlington"}
-                className="mt-1 text-mine text-danger"
-              >
-                More Assignments in Burlington{" "}
-                <i className="bi bi-arrow-right-short"></i>
-              </Link>
-            </div>
-            <div className="row row-cols-2 row-cols-md-4  gy-md-4 gy-0 gx-3 gx-lg-3 ">
-              {burlington_data.preconstructions &&
-                burlington_data.preconstructions.slice(0, 8).map((item, no) => (
-                  <div className="col" key={item.id}>
-                    <script
-                      key={item.slug}
-                      type="application/ld+json"
-                      dangerouslySetInnerHTML={{
-                        __html: JSON.stringify(PreconSchema(item)),
-                      }}
-                    />
-                    <CondoCard {...item} no={no} />
-                  </div>
-                ))}
-            </div>
-          </div>
-          <div className="py-5 my-2"></div>
 
           {/* <div className="py-5 mt-md-5 mt-0">
             <div className="text-center py-5 my-5 overlay-container">
