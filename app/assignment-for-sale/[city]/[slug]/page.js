@@ -135,24 +135,42 @@ export default async function Home({ params }) {
           <div className="container  px-0 pt-3">
             <div className="row row-cols-1 row-cols-sm-1 row-cols-md-2 justify-content-center">
               <div className="col col-md-6 pe-md-5 pe-0">
-                <Gallery
-                  images={data.image}
-                  project_name={data.project_name}
-                  project_address={data.project_address}
-                ></Gallery>
+                <div className="position-relative">
+                  <Gallery
+                    images={data.image}
+                    project_name={data.project_name}
+                    project_address={data.project_address}
+                  ></Gallery>
+                  <div class="position-absolute myps8 bg-white p-1 px-2">
+                    {" "}
+                    Area : {data.area} sqft
+                  </div>
+                </div>
 
                 <div className="screenshot ">
                   <div className="row row-cols-1 row-cols-sm-2">
                     <div className="col-sm-12">
-                      <div className="d-flex gap-3 my-2">
-                        <div className=" btn btn-sm btn-white shadow ">
-                          <span className="col fs-esmall">
-                            {data.city.name}
-                          </span>
-                        </div>
-                        <div className=" btn btn-sm btn-danger ">
-                          <span className="col  ">{data.project_type}</span>
-                        </div>
+                      <h1 className="text-mine  fw-mine mt-1 mb-0 text-danger font-family2 mb-1 pricefs1">
+                        {checkPricing(data.price_starting_from)}
+                      </h1>
+                      <div className="d-flex align-items-center mb-0">
+                        <span>{data.beds} Bed</span>
+                        <h3 class="fw-bold mx-2">.</h3>
+
+                        <span>{data.baths} Baths</span>
+                        <h3 class="fw-bold mx-2">.</h3>
+
+                        <span>{data.project_type}</span>
+
+                        <h3 class="fw-bold mx-2">.</h3>
+                        <span className="fw-bold">{data.city.name}</span>
+                      </div>
+                      <div className="">
+                        <span>Occupancy - {data.occupancy}</span>
+                      </div>
+                      <div className="mb-1">
+                        <span className=" fw-mine2 mb-2 fs-mine3"></span>
+                        <span scope="col">{data.project_name}</span>
                       </div>
 
                       {/* <h1 className="side  fw-mine font-family2">
@@ -163,44 +181,8 @@ export default async function Home({ params }) {
                         <strong>{data.preconstruction.developer.name}</strong>
                       </p> */}
 
-                      <h1 className="text-mine  fw-mine mt-1 mb-0 text-danger font-family2 mb-1 pricefs1">
-                        {checkPricing(data.price_starting_from)}
-                      </h1>
                       <div className="rounded-mine">
                         <div>
-                          <div className="mb-1">
-                            <span className=" fw-mine2 mb-2 fs-mine3"></span>
-                            <span scope="col">{data.project_name}</span>
-                          </div>
-                          <div className="bg-light mt-5">
-                            <div className="row row-cols-md-4 row-cols-1 text-dark py-3 ps-3 ">
-                              <div className="col mb-3 ">
-                                <h6 className="fw-bold">Bedroom</h6>
-                                <span>{data.beds}</span>
-                              </div>
-                              <div className="col mb-3 ">
-                                <h6 className="fw-bold">Bathroom</h6>
-                                <span>{data.baths}</span>
-                              </div>
-                              <div className="col mb-3 ">
-                                <h6 className="fw-bold">Area</h6>
-                                <span>{data.area} sq.ft.</span>
-                              </div>
-                              <div className="col mb-3 ">
-                                <h6 className="fw-bold">City</h6>
-                                <span>{data.city.name}</span>
-                              </div>
-                              <div className="col mb-3">
-                                <h6 className="fw-bold">Assignment Type</h6>
-                                <span>{data.project_type}</span>
-                              </div>
-                              <div className="col mb-3">
-                                <h6 className="fw-bold">Occupancy</h6>
-                                <span>{data.occupancy}</span>
-                              </div>
-                            </div>
-                          </div>
-
                           {/* <div className="mb-1">
                             <span className="me-2 fw-mine2 mb-2 fs-mine3">
                               Number Of Floor Plans:
@@ -296,8 +278,10 @@ export default async function Home({ params }) {
                       }
                       city={data.preconstruction.city.name}
                     /> */}
+                    <div className="pt-md-5 mt-md-5"></div>
                     <div className="pb-5 mt-5">
-                      <h2 className="fw-bold  fs-big font-family2 pt-5">
+                      <hr />
+                      <h2 className="fw-bold  fs-big font-family2 ">
                         Listing Description
                       </h2>
                       <div className="text-start my-3 text-inside">
@@ -340,14 +324,20 @@ export default async function Home({ params }) {
                     </p>
                     <div className="d-flex justify-content-end mt-3">
                       <div className="d-inline fs-5 fw-bold">
-                        <span>Propertyassign</span>
-                        <span className="text-danger">.</span>
+                        <span>propertyassign</span>
+                        <span className="text-danger">.ca</span>
                       </div>
                     </div>
                   </div>
                 </div>
 
                 <div>
+                  <div className="pt-5">
+                    <h3 className="fw-bold fs-2">Mortgage Calculator</h3>
+                    <p>
+                      Quickly See What Your Mortgage Payments Might Look Like
+                    </p>
+                  </div>
                   <MortgageCalculator />
                 </div>
 

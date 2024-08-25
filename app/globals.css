@@ -1553,7 +1553,7 @@ label {
     color: #000000;
     font-size: .6rem;
     font-weight: 500;
-    ;
+
 }
 
 .abs3 {
@@ -1578,6 +1578,14 @@ label {
     font-weight: 900 !important;
     font-size: 2.5rem;
     ;
+}
+
+.myps8 {
+    bottom: 1rem;
+    left: 15px;
+    border-radius: 5px;
+    font-weight: 700;
+    font-size: 14px;
 }
 
 .fstatus {

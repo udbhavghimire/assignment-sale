@@ -21,8 +21,8 @@ const MortgageCalculator = () => {
   };
 
   return (
-    <div className="py-sm-4" id="mortgage">
-      <section className="position-relative py-2">
+    <div className="" id="mortgage">
+      <section className="position-relative">
         <div className="container bg-light py-5">
           <div className="row row-cols-1 row-cols-md-2 justify-content-center align-items-center">
             <div className="col-md-6">

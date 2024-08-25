@@ -7,7 +7,7 @@ export default function FixedContactButton() {
         <div className=" shadow-lg rounded-mine d-flex flex-column">
           <div className="btn my-sm-0 ms-md-3 d-flex align-items-center gap-2">
             <img
-              src="/COA-agent-pic.jpg"
+              src="/contact-bottom-2.png"
               alt="agent pic"
               className="img-fluid img-call-height"
             />
