@@ -11,7 +11,7 @@ export default function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (username === "admin" && password === "12345") {
+    if (username === "admin" && password === "Assign789!") {
       sessionStorage.setItem("isAuthenticated", "true");
       router.push("/admin");
     } else {
