@@ -4,8 +4,17 @@ import Link from "next/link";
 import ListingTable from "@/components/ListingTable";
 import axios from "axios";
 import swal from "sweetalert";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const router = useRouter();
+
+  useEffect(() => {
+    const isAuthenticated = sessionStorage.getItem("isAuthenticated");
+    if (!isAuthenticated) {
+      router.push("/login");
+    }
+  }, []);
   const [filters, setFilters] = useState({
     city: "All",
     status: "All",
@@ -28,7 +37,9 @@ export default function Home() {
         "https://api.assignhome.ca/api/preconstructions/?small=aaa&page=" +
           page +
           "&city=" +
-          filters.city
+          filters.city +
+          "&project_type=" +
+          filters.project_type
       )
       .then((res) => {
         console.log(res.data.results);
@@ -36,11 +47,11 @@ export default function Home() {
         setTotalPages(Math.ceil(res.data.count / 10));
       })
       .catch((err) => {
-        console.log(err.data);
+        console.log(err.response ? err.response.data : err.message);
       });
 
     axios
-      .get("https://api.assignhome.ca/api/city/?show_desc=no")
+      .get("https://api.condomonk.ca/api/city/?show_desc=no")
       .then((res) => {
         setCities(res.data.results);
       })
@@ -113,7 +124,7 @@ export default function Home() {
                 id="city"
                 value={filters.city}
                 onChange={(e) => handleChange(e)}
-                aira-label="Floating label select example"
+                aria-label="Floating label select example"
               >
                 <option value="All">All</option>
                 {cities &&
