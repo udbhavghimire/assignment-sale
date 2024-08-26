@@ -64,9 +64,9 @@ export default function CondoCard(props) {
             </span>
           </span>
 
-          <span className="px-2 abs2">
+          {/* <span className="px-2 abs2">
             {props.no + 1 ? props.no + 1 + " " : " "}
-          </span>
+          </span> */}
         </div>
 
         <Link

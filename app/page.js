@@ -73,7 +73,7 @@ export default async function Home(props) {
             <h2 className="fw-mine ccent-line fs-big ">
               <Link
                 href={"assignment-for-sale/mississauga"}
-                className="link-black font-family2"
+                className="link-black "
               >
                 Assignment For Sale in Mississauga
               </Link>
@@ -112,7 +112,7 @@ export default async function Home(props) {
               <h2 className="fw-mine ccent-line fs-big pt-5">
                 <Link
                   href={"assignment-for-sale/milton"}
-                  className="link-black font-family2"
+                  className="link-black "
                 >
                   Assignment For Sale in Milton
                 </Link>
@@ -152,7 +152,7 @@ export default async function Home(props) {
               <h2 className="fw-mine ccent-line fs-big pt-5">
                 <Link
                   href={"assignment-for-sale/burlington"}
-                  className="link-black font-family2"
+                  className="link-black "
                 >
                   Assignment For Sale in Burlington
                 </Link>
@@ -187,7 +187,7 @@ export default async function Home(props) {
             </div>
           </div>
           <div className="py-5 my-2"></div>
-          <h2 className="fw-mine text-center mb-5 accent-line fs-1 font-family2">
+          <h2 className="fw-mine text-center mb-5 accent-line fs-1 ">
             Explore New Assignment Sales In Ontario & Alberta
           </h2>
           <div className="container">

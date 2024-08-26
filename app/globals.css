@@ -68,7 +68,7 @@ a:hover {
 
 @media (min-width: 1200px) {
     .fs-big {
-        font-size: 4rem !important;
+        font-size: 3.5rem !important;
     }
 
     .popup-container {
@@ -159,7 +159,7 @@ a:hover {
 }
 
 .logo span {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 800;
     color: #000;
 }
@@ -171,7 +171,7 @@ a:hover {
     }
 
     .logo span {
-        font-size: 30px;
+        font-size: 28px;
         color: #222;
     }
 
@@ -622,9 +622,9 @@ a:hover {
     }
 
     .fs-big {
-        font-size: 3rem !important;
+        font-size: 2.5rem !important;
         font-weight: 800 !important;
-        color: #2c2c2c !important;
+        color: #000000 !important;
     }
 
     .fs-gta {

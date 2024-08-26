@@ -43,8 +43,8 @@ const Carousel = () => {
           >
             <div className="text-red-600 mb-2 font-bold">
               <div className="flex items-center mb-md-4 mb-2">
-                <hr className="w-20 mr-4" />
-                <span>{slides[currentSlide].saleInfo}</span>
+                {/* <hr className="w-20 mr-4" /> */}
+                {/* <span>{slides[currentSlide].saleInfo}</span> */}
               </div>
             </div>
             <h1 className="carousel-titlee font-bold mb-4">
