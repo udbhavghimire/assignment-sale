@@ -1,6 +1,13 @@
 import Link from "next/link";
 
-const ListingTable = ({ preconstructions, handleDelete, filters }) => {
+const ListingTable = ({
+  preconstructions,
+  handleDelete,
+  filters,
+  page,
+  itemsPerPage,
+}) => {
+  // Filter preconstructions based on status
   const filteredPreconstructions = preconstructions.filter(
     (preconstruction) => {
       if (filters.status === "All") {
@@ -10,9 +17,10 @@ const ListingTable = ({ preconstructions, handleDelete, filters }) => {
       }
     }
   );
+
   return (
     <div className="container table-responsive">
-      <table className="table table-striped table-responsive">
+      <table className="table table-striped">
         <thead>
           <tr className="bg-dark text-white">
             <th scope="col">S.N</th>
@@ -25,7 +33,7 @@ const ListingTable = ({ preconstructions, handleDelete, filters }) => {
         <tbody>
           {filteredPreconstructions.map((preconstruction, index) => (
             <tr key={index}>
-              <th scope="row">{index + 1}</th>
+              <th scope="row">{(page - 1) * itemsPerPage + (index + 1)}</th>
               <td>{preconstruction.project_name}</td>
               <td>{preconstruction.city.name}</td>
               <td>{preconstruction.project_type}</td>

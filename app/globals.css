@@ -581,6 +581,7 @@ a:hover {
     .cardd-price {
         font-size: 1.5rem !important;
         font-weight: 700 !important;
+        color: red !important;
     }
 
     .fs-small {
@@ -1460,7 +1461,8 @@ label {
 }
 
 .pricefs1 {
-    font-size: 3.5rem;
+    font-size: 3.2rem;
+    color: red;
 }
 
 .absolute-design-border2 {
@@ -1522,6 +1524,7 @@ label {
 .cardd-price {
     font-size: 1.6rem;
     font-weight: 600;
+    color: red;
 }
 
 .cardd-subtitle {
@@ -2004,7 +2007,27 @@ textarea {
 }
 
 .brand-color {
-    color: #ebb105;
+    color: red !important;
+}
+
+.image3 {
+    width: 100% !important;
+    height: 150px !important;
+    border-radius: 70% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+}
+
+.vsi {
+    height: 70px !important;
+    width: 70px !important;
+    object-fit: cover;
+    border-radius: 50%;
+    object-position: center;
+}
+
+.bva {
+    font-size: 13px !important;
 }
 
 .breadcrumb {

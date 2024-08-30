@@ -44,7 +44,7 @@ const Navbar = ({ cities, transparent }) => {
               className="logo d-flex justify-content-center align-items-center pe-1  text-sm"
             >
               <span>
-                propertyassign<span className="text-danger">.ca</span>{" "}
+                propertyassign<span className="brand-color">.ca</span>{" "}
               </span>
             </Link>
             <div

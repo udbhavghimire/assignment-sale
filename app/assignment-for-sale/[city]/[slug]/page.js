@@ -150,7 +150,7 @@ export default async function Home({ params }) {
                 <div className="screenshot ">
                   <div className="row row-cols-1 row-cols-sm-2">
                     <div className="col-sm-12">
-                      <h1 className="text-mine  fw-mine mt-1 mb-0 text-danger font-family2 mb-1 pricefs1">
+                      <h1 className="text-mine  fw-mine mt-1 mb-0  font-family2 mb-1 pricefs1">
                         {checkPricing(data.price_starting_from)}
                       </h1>
                       <div className="d-flex align-items-center mb-0">
@@ -450,17 +450,27 @@ export default async function Home({ params }) {
                         </p>
                       </div>
                     </div> */}
-                    <div className="row  d-flex align-items-center justify-content-center ">
-                      <Image
-                        src="/contact-bottom-2.png"
-                        alt="Contact bottom"
-                        width={300}
-                        height={250}
-                        className="img-fluid w-50 w-smm-50 mb-2"
-                      />
+                    <div className=" ">
+                      <div className="row row-cols-2 gx-0 mx-0 d-flex align-items-center justify-content-center">
+                        <div className="col-6">
+                          <img
+                            loading="lazy"
+                            src="https://api.homebaba.ca/media/Sam-Homebaba-Insta.png"
+                            layout="responsive"
+                            className="img-fluid image3"
+                            alt="Sam Valji"
+                          />
+                        </div>
+                        <div className="col-6 ">
+                          <h5 class="fw-bold linem  fs-3  mb-0">Sam Valji</h5>
+                          <p className="fw-normal text-decoration-underline bva  f-a ">
+                            Bay Street Group Inc., Brokerage
+                          </p>
+                        </div>
+                      </div>
 
                       <div className="text-center">
-                        <h5 className="fw-bold text-center linem fs-1 text-danger mb-0 font-family2">
+                        <h5 className="fw-bold text-center linem fs-2 brand-color mb-0 font-family2 pt-4">
                           Assignment For Sale
                         </h5>
 

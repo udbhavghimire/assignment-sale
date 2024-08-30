@@ -75,7 +75,7 @@ export default function CondoCard(props) {
           target="_blank"
         >
           <div className="card-content">
-            <h3 className="mb-1 text-red-500 cardd-price">
+            <h3 className="mb-1  cardd-price">
               {checkPricing(props.price_starting_from)}
             </h3>
             <div className="d-flex">
