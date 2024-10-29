@@ -18,8 +18,8 @@ export default function Home() {
 
   const [filters, setFilters] = useState({
     city: "All",
-    status: "All",
     typee: "All",
+    status: "All",
   });
   const [preconstructions, setPreConstructions] = useState([]);
   const [cities, setCities] = useState([]);
@@ -28,26 +28,68 @@ export default function Home() {
   const [totalPages, setTotalPages] = useState(1);
   const itemsPerPage = 10; // Set items per page
 
-  function handleChange(e) {
-    setFilters({ ...filters, [e.target.id]: e.target.value });
-    setPage(1); // Reset to the first page when filters change
-  }
-  useEffect(() => {
-    // Fetch preconstructions based on filters and pagination
-    axios
-      .get(
-        `https://api.assignhome.ca/api/preconstructions/?city=${filters.city}&project_type=${filters.typee}&page=${page}&page_size=${itemsPerPage}`
-      )
-      .then((res) => {
-        console.log(res.data.results);
-        setPreConstructions(res.data.results);
-        setTotalPages(Math.ceil(res.data.count / itemsPerPage));
-      })
-      .catch((err) => {
-        console.error(err.response ? err.response.data : err.message);
-      });
+  const handleFilterChange = async (e) => {
+    const { name, value } = e.target;
+    console.log(`Filter changed: ${name} = ${value}`);
 
-    // Fetch cities list
+    try {
+      let response;
+
+      if (name === "city" && value !== "All") {
+        const propertyType =
+          filters.typee !== "All" ? `&typee=${filters.typee}` : "";
+        response = await axios.get(
+          `https://api.assignhome.ca/api/preconstructions-city/${value}/?closing_year=2023${propertyType}`
+        );
+
+        if (response.data.preconstructions) {
+          setPreConstructions(response.data.preconstructions);
+          setTotalPages(
+            Math.ceil(response.data.preconstructions.length / itemsPerPage)
+          );
+        }
+      } else {
+        let params = {
+          page: page,
+          page_size: itemsPerPage,
+        };
+
+        if (filters.city !== "All") params.city = filters.city;
+        if (filters.typee !== "All") params.typee = filters.typee;
+        if (filters.status !== "All") params.status = filters.status;
+
+        if (value !== "All") {
+          params[name] = value;
+        }
+
+        response = await axios.get(
+          "https://api.assignhome.ca/api/preconstructions/",
+          { params }
+        );
+
+        if (response.data.results) {
+          setPreConstructions(response.data.results);
+          setTotalPages(Math.ceil(response.data.count / itemsPerPage));
+        }
+      }
+
+      setFilters((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      setPreConstructions([]);
+    }
+  };
+
+  // Add this useEffect to fetch initial data when component mounts
+  useEffect(() => {
+    handleFilterChange({ target: { name: "city", value: "All" } });
+  }, []);
+
+  // Fetch cities list
+  useEffect(() => {
     axios
       .get("https://api.assignhome.ca/api/city/?all")
       .then((res) => {
@@ -56,7 +98,7 @@ export default function Home() {
       .catch((err) => {
         console.error(err.response ? err.response.data : err.message);
       });
-  }, [filters, page]);
+  }, []);
 
   const handleDelete = (e, id) => {
     swal({
@@ -115,20 +157,18 @@ export default function Home() {
             <div className="form-floating">
               <select
                 className="form-select"
-                id="city"
+                name="city"
                 value={filters.city}
-                onChange={(e) => handleChange(e)}
-                aria-label="Floating label select example"
+                onChange={handleFilterChange}
               >
                 <option value="All">All</option>
-                {cities &&
-                  cities.map((city) => (
-                    <option key={city.id} value={city.slug}>
-                      {city.name}
-                    </option>
-                  ))}
+                {cities.map((city) => (
+                  <option key={city.id} value={city.slug}>
+                    {city.name}
+                  </option>
+                ))}
               </select>
-              <label htmlFor="floatingCity">Select City</label>
+              <label htmlFor="city">Select City</label>
             </div>
           </div>
 
@@ -137,16 +177,15 @@ export default function Home() {
             <div className="form-floating">
               <select
                 className="form-select"
-                id="typee"
+                name="typee"
                 value={filters.typee}
-                onChange={(e) => handleChange(e)}
-                aria-label="Floating label select example"
+                onChange={handleFilterChange}
               >
                 <option value="All">All</option>
-                <option value="Condo">Condo</option>
-                <option value="Townhome">Townhome</option>
-                <option value="Detached">Detached</option>
-                <option value="Semi-Detached">Semi-Detached</option>
+                <option value="condo">Condo</option>
+                <option value="townhome">Townhome</option>
+                <option value="detached">Detached</option>
+                <option value="semi-detached">Semi-Detached</option>
               </select>
               <label htmlFor="typee">Select Project Type</label>
             </div>
@@ -157,9 +196,9 @@ export default function Home() {
             <div className="form-floating">
               <select
                 className="form-select"
-                id="status"
+                name="status"
                 value={filters.status}
-                onChange={(e) => handleChange(e)}
+                onChange={handleFilterChange}
                 aria-label="Floating label select example"
               >
                 <option value="All">All</option>

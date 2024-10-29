@@ -7,14 +7,13 @@ const ListingTable = ({
   page,
   itemsPerPage,
 }) => {
-  // Filter preconstructions based on status
   const filteredPreconstructions = preconstructions.filter(
     (preconstruction) => {
-      if (filters.status === "All") {
-        return true; // Show all preconstructions
-      } else {
-        return preconstruction.status === filters.status;
-      }
+      return (
+        (filters.status === "All" ||
+          preconstruction.status === filters.status) &&
+        (filters.city === "All" || preconstruction.city.slug === filters.city)
+      );
     }
   );
 
