@@ -111,9 +111,26 @@ export default function CondoCard(props) {
               By {props.developer.name}
             </p> */}
             <p className="mb-1 cardd-subtitle ">{props.project_name}</p>
-            <p className="mb-1 cardd-subtitle text-secondary">
+            <p className="mb-1 cardd-subtitle ">
               Approx completion: {props.occupancy}
             </p>
+            <span className="cardd-subtitle  mb-2 flex items-center">
+              <span className="mr-1 w-1 h-1 bg-black"></span>
+              {daysCount(props.date_of_upload)}
+            </span>
+          </div>
+
+          <hr className="mb-0" />
+          <div className="d-flex justify-content-center align-items-center">
+            <div>
+              <img src="/Sam-Homebaba.png" class="vsi" alt="" />
+            </div>
+
+            <div className="ms-2">
+              {" "}
+              <h5 className="fw-bold linem bva mb-0 ">Sam Valji</h5>
+              <p className="card-text bva">Bay Street Group Inc., Brokerage</p>
+            </div>
           </div>
         </Link>
       </div>
