@@ -7,12 +7,12 @@ export default function FixedContactButton() {
         <div className=" shadow-lg rounded-mine d-flex flex-column">
           <div className="btn my-sm-0 ms-md-3 d-flex align-items-center gap-2">
             <img
-              src="/contact-bottom-2.png"
+              src="/Sam-Homebaba.png"
               alt="agent pic"
               className="img-fluid img-call-height"
             />
             <span className="d-flex flex-column justify-content-start text-white text-sm">
-              <b>Send me latest info</b>
+              <b>Send me details</b>
             </span>
           </div>
         </div>
